@@ -1,0 +1,59 @@
+@tailwind base;
+//@tailwind components;
+@tailwind utilities;
+@import "reset";
+@import "variables";
+
+$colors-light: (
+	//text: $dark,
+	bg: $light_bg,
+	line: $light_line
+);
+
+$colors-dark: (
+	//text: $light,
+	bg: $dark_bg,
+	line: $dark_line
+);
+
+/* Mixin to apply color based on scheme */
+@mixin theme-colors($scheme) {
+	//$text: map-get($scheme, text);
+	$bg: map-get($scheme, bg);
+	$line_color: map-get($scheme, line);
+
+	body {
+		color: $text_color;
+		mix-blend-mode: difference;
+		background: $bg;
+	}
+
+	main {
+		border: solid 1px $line_color;
+	}
+}
+
+@include theme-colors($colors-light);
+
+@media (prefers-color-scheme: dark) {
+	@include theme-colors($colors-dark);
+}
+
+html {
+	overflow: hidden;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+main {
+	border-radius: $border_radius;
+	margin: $margin;
+	min-height: calc(100vh - $margin * 2);
+	height: 100%;
+	width: calc(100vw - $margin * 2);
+	min-width: 360px;
+	filter: $drop-shadow;
+}

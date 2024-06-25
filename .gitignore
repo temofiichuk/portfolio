@@ -16,8 +16,14 @@
 # production
 /build
 
-# misc
+# IDE and Editors
+.idea/
+.vscode/
+
+# OS
 .DS_Store
+
+# misc
 *.pem
 
 # debug
@@ -34,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#other
+**/*.example
+**/*.example.*
+.prettierrc
+
