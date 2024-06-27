@@ -1,0 +1,7 @@
+.main {
+	@apply flex rounded-base m-base h-full max-h-app min-w-app max-w-app border border-base-color;
+}
+
+.pageWrapper {
+	@apply flex flex-col min-h-full w-full;
+}

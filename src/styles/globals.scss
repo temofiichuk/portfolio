@@ -2,41 +2,56 @@
 //@tailwind components;
 @tailwind utilities;
 @import "reset";
-@import "variables";
 
-$colors-light: (
-	//text: $dark,
-	bg: $light_bg,
-	line: $light_line
-);
+@layer base {
+	:root {
+		// colors
+		--dark-bg: #010c15;
+		--light-bg: #fafafa;
 
-$colors-dark: (
-	//text: $light,
-	bg: $dark_bg,
-	line: $dark_line
-);
+		--dark-border-color: #1e2d3d;
+		--light-border-color: #b8c7d7;
 
-/* Mixin to apply color based on scheme */
-@mixin theme-colors($scheme) {
-	//$text: map-get($scheme, text);
-	$bg: map-get($scheme, bg);
-	$line_color: map-get($scheme, line);
+		--text-color: #607b96;
+		--not-active-icon-color: #607b96;
 
-	body {
-		color: $text_color;
-		mix-blend-mode: difference;
-		background: $bg;
+		--active-page-border-color: #fea55f;
+
+		--gray: #607b96;
+		--dark-gray: #1e2d3d;
+		--turquoise: #43d9ad;
+		--violet: #4d5bce;
+		--coral: #e99287;
+		--blue: #4fc3f7;
+		--green: #81c784;
+		--rose: #aa759f;
+		--orange: #fea55f;
+
+		//icons
+		--icon-personal-info: #81c784;
+		--icon-professional-info: #aa759f;
+		--icon-macbook: #43d9ad;
+		--icon-hobbies: #4fc3f7;
+
+		//variables
+		--border-radius-base: 15px;
+		--margin-base: 15px;
+		--input-drop-shadow: drop-shadow(0 0 2px rgba(96, 123, 150, 0.3));
+		--min-screen: 360px;
+		--min-elm-size: 32px;
+
+		// dark mode
+		--background: var(--dark-bg);
+		--border-color-base: var(--dark-border-color);
+		--theme-switcher-bg: var(--light-bg);
 	}
 
-	main {
-		border: solid 1px $line_color;
+	// light mode
+	.light {
+		--background: var(--light-bg);
+		--border-color-base: var(--light-border-color);
+		--theme-switcher-bg: var(--dark-bg);
 	}
-}
-
-@include theme-colors($colors-light);
-
-@media (prefers-color-scheme: dark) {
-	@include theme-colors($colors-dark);
 }
 
 html {
@@ -46,14 +61,13 @@ html {
 html,
 body {
 	height: 100%;
+	width: 100%;
 }
 
-main {
-	border-radius: $border_radius;
-	margin: $margin;
-	min-height: calc(100vh - $margin * 2);
-	height: 100%;
-	width: calc(100vw - $margin * 2);
-	min-width: 360px;
-	filter: $drop-shadow;
+body {
+	@apply bg-background text-base-color;
+}
+
+button {
+	@apply flex;
 }

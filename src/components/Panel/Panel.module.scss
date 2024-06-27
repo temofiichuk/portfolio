@@ -1,0 +1,38 @@
+.panel {
+	@apply h-[var(--min-elm-size)];
+	&[data-position="0"] > ul {
+		@apply border-b;
+	}
+	&[data-position="1"] > ul {
+		@apply border-t;
+	}
+	&[data-position="2"] > ul {
+		@apply border-r;
+	}
+	&[data-position="3"] > ul {
+		@apply border-l;
+	}
+	> ul {
+		@apply flex items-center w-full border-base-color h-full;
+
+		> li {
+			@apply border-inherit flex items-center h-full;
+
+			button {
+				@apply px-6 text-base-color;
+			}
+		}
+
+		> li:not(:last-child) {
+			@apply border-r;
+		}
+
+		> li:last-child {
+			@apply border-l ml-auto;
+		}
+
+		> li:first-child {
+			@apply pr-16 pl-6;
+		}
+	}
+}

@@ -1,0 +1,3 @@
+.header ul > li:has([data-active="true"]) {
+	@apply border-b-2 border-b-active-page-color;
+}
