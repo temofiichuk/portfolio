@@ -1,7 +1,0 @@
-.sidebar {
-	@apply border-base-color border-r w-0 max-w-[330px] transition-all duration-300;
-
-	&[data-open="true"] {
-		@apply w-full;
-	}
-}

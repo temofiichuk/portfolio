@@ -1,7 +1,0 @@
-.aside {
-	@apply flex flex-col w-[calc(var(--min-elm-size)*1.2)] items-center border-r py-5 border-inherit box-content;
-}
-
-.wrapper {
-	@apply flex flex-col items-center mt-auto gap-5;
-}

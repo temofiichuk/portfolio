@@ -6,7 +6,13 @@ import { Locale } from "../../../i18n.config";
 import { useTranslation } from "react-i18next";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import Link from "next/link";
-import { RiGithubFill, RiLinkedinFill } from "@remixicon/react";
+import {
+	RiGamepadFill,
+	RiGithubFill,
+	RiLinkedinFill,
+	RiPuzzleFill,
+	RiTerminalBoxFill,
+} from "@remixicon/react";
 
 interface IFooter extends HTMLAttributes<HTMLElement> {
 	locale: Locale;
@@ -23,12 +29,22 @@ const Footer = ({ locale, ...props }: IFooter) => {
 	return (
 		<footer {...props} className={`${props.className} ${styles.footer}`}>
 			<Panel position={PanelPosition.BOTTOM}>
+				<button aria-label="open professional info" title="Open professional info">
+					<RiTerminalBoxFill widths={20} className={"hover:fill-icon-professional-info"} />
+				</button>
+				<button aria-label="open personal info" title="Open personal info">
+					<RiPuzzleFill widths={20} className={"hover:fill-icon-personal-info"} />
+				</button>
+				<button aria-label="open hobbies" title="Open hobbies">
+					<RiGamepadFill widths={20} className={"hover:fill-icon-hobbies"} />
+				</button>
 				<p>{t("find_me_in")}</p>
 				{social.map(({ title, href, icon }) => (
 					<Link key={title} title={title} href={href}>
 						<button>{icon}</button>
 					</Link>
 				))}
+
 				<ThemeSwitcher />
 			</Panel>
 		</footer>

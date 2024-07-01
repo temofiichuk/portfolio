@@ -18,6 +18,10 @@
 		> li {
 			@apply border-inherit flex items-center h-full;
 
+			&:not(:has(button)) {
+				@apply px-6;
+			}
+
 			button {
 				@apply px-6 text-base-color;
 			}
@@ -29,10 +33,6 @@
 
 		> li:last-child {
 			@apply border-l ml-auto;
-		}
-
-		> li:first-child {
-			@apply pr-16 pl-6;
 		}
 	}
 }
