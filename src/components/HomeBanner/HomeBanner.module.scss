@@ -1,0 +1,60 @@
+.banner {
+	@apply h-full w-full relative container-page m-auto transition-all;
+}
+
+.wrapper {
+	@apply w-full h-full flex flex-col justify-start items-start m-auto gap-[20%] top-1/4;
+}
+
+.extraWrapper {
+	@apply flex flex-col justify-between;
+}
+
+.keyword,
+.position {
+	@apply text-[var(--keyword-color)];
+}
+
+.variable {
+	@apply text-[var(--variable-color)];
+}
+
+.sign {
+	@apply dark:text-[var(--sign-color)];
+}
+
+.link {
+	@apply text-[var(--link-color)];
+}
+
+.hi,
+.name {
+	@apply text-[var(--text)];
+}
+
+.hi {
+	@apply text-[18px] top-5;
+}
+
+.name {
+	@apply text-[62px];
+}
+
+.position {
+	@apply text-[32px];
+}
+
+.hi,
+.name,
+.position,
+.comment {
+	@apply touch-none cursor-none pointer-events-none;
+}
+
+.mainText {
+	@apply mb-10;
+}
+
+.anima {
+	@apply absolute right-0 top-0 bottom-0 max-w-[50%] -z-50;
+}

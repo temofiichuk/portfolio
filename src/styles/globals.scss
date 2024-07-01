@@ -7,15 +7,23 @@
 	:root {
 		// colors
 		--dark-bg: #010c15;
-		--light-bg: #fafafa;
+		--light-bg: #fcfcfc;
 
 		--dark-border-color: #1e2d3d;
 		--light-border-color: #b8c7d7;
 
 		--text-color: #607b96;
+		--dark-text-color: #ffffff;
+		--light-text-color: #000000;
+
 		--not-active-icon-color: #607b96;
 
 		--active-page-border-color: #fea55f;
+		--link-color: #fea55f;
+		--keyword-color: #4d5bce;
+		--variable-color: #43d9ad;
+		--sign-color: #ffffff;
+		--text-light-color: #e5e9f0;
 
 		--gray: #607b96;
 		--dark-gray: #1e2d3d;
@@ -44,14 +52,35 @@
 		--background: var(--dark-bg);
 		--border-color-base: var(--dark-border-color);
 		--theme-switcher-bg: var(--light-bg);
+		--text: var(--dark-text-color);
 	}
 
 	// light mode
 	.light {
 		--background: var(--light-bg);
 		--border-color-base: var(--light-border-color);
+		--text: var(--light-text-color);
 		--theme-switcher-bg: var(--dark-bg);
 	}
+}
+
+// scrollbar
+root {
+	--dark-bg: #010c15;
+	--light-bg: #fafafa;
+	--base-color: #607b96;
+
+	--dark-border-color: #1e2d3d;
+	--light-border-color: #b8c7d7;
+
+	// dark mode
+	--bg-scrollbar: var(--dark-bg);
+	--border-color-base: var(--dark-border-color);
+}
+
+.light {
+	--bg-scrollbar: var(--light-bg);
+	--border-color-base: var(--light-border-color);
 }
 
 html {
@@ -70,4 +99,8 @@ body {
 
 button {
 	@apply flex;
+}
+
+a {
+	@apply text-base-color hover:text-inherit;
 }

@@ -1,10 +1,12 @@
 import styles from "./Header.module.scss";
-import Link from "next/link";
 import { HTMLAttributes } from "react";
-import Button from "@/components/Button/Button";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Route from "@/components/Route/Route";
-import Panel, { PanelPosition } from "@/components/Panel/Panel";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { PanelPosition } from "@/components/Panel/Panel";
+
+const Panel = dynamic(() => import("@/components/Panel/Panel"));
 
 interface IHeader extends HTMLAttributes<HTMLHeadingElement> {
 	route: string;
@@ -17,12 +19,11 @@ const pages = [
 ];
 
 const Header = (props: IHeader) => {
-	console.clear();
 	return (
 		<header {...props} className={`${props.className} ${styles.header}`}>
 			<Panel position={PanelPosition.TOP}>
-				<Link href={"/"}>
-					<Button title={`link to the home.tsx`}> mykhailo_temofiichuk </Button>
+				<Link title={`link to the home.tsx`} href={"/"}>
+					mykhailo_temofiichuk
 				</Link>
 
 				{pages.map(({ title, href }) => (

@@ -56,7 +56,7 @@ const LanguageSwitcher = (props: ILanguageSwitcher) => {
 				<div>
 					<ul>
 						{languages.map(({ key, full_name }) => (
-							<li key={key} aria-checked={key === currentLocale}>
+							<li key={key} data-checked={key === currentLocale}>
 								<button onClick={handleChange} value={key}>
 									{full_name}
 								</button>

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
 	content: [
@@ -31,10 +32,12 @@ const config: Config = {
 				base: "var(--border-radius-base)",
 			},
 			maxHeight: {
-				app: "calc(100vh - var(--margin-base) * 2)",
+				"app": "calc(100vh - var(--margin-base) * 2)",
+				"page-wrapper": "calc(100vh - (var(--margin-base) * 2) - (var(--min-elm-size) * 2))",
 			},
 			maxWidth: {
-				app: "calc(100vw - var(--margin-base) * 2)",
+				"app": "calc(100vw - var(--margin-base) * 2)",
+				"page-wrapper": "calc(100vw - var(--margin-base) * 2 - var(--min-elm-size))",
 			},
 			minWidth: {
 				app: "var(--min-screen)",
@@ -45,6 +48,29 @@ const config: Config = {
 		},
 	},
 	darkMode: "class",
-	plugins: [],
+	plugins: [
+		plugin(function ({ addComponents }) {
+			addComponents({
+				".container-page": {
+					"maxWidth": "100%",
+					"@media (min-width: 640px)": {
+						maxWidth: "600px",
+					},
+					"@media (min-width: 768px)": {
+						maxWidth: "700px",
+					},
+					"@media (min-width: 1024px)": {
+						maxWidth: "900px",
+					},
+					"@media (min-width: 1280px)": {
+						maxWidth: "1200px",
+					},
+					"@media (min-width: 1536px)": {
+						maxWidth: "1450px",
+					},
+				},
+			});
+		}),
+	],
 };
 export default config;

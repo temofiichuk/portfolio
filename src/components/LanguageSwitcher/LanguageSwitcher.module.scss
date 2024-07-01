@@ -1,7 +1,7 @@
 .languageSwitcher {
 	@apply flex;
 	.wrapper {
-		@apply right-[var(--margin-base)] top-[calc(var(--min-elm-size)+var(--margin-base)/2)] absolute transition-all ease-in-out grid grid-rows-[0fr];
+		@apply right-[var(--margin-base)] top-[calc(var(--min-elm-size)+var(--margin-base)/2)] absolute transition-all ease-in-out grid grid-rows-[0fr] z-10;
 
 		&[data-active="true"] {
 			@apply grid-rows-[1fr];
@@ -26,7 +26,7 @@
 				@apply border-b;
 			}
 
-			li[aria-checked="true"] {
+			li[data-checked="true"] {
 				@apply bg-gray-100 bg-opacity-10;
 			}
 		}

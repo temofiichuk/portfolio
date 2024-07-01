@@ -17,7 +17,7 @@ const useOutsideEvent = <N extends Node, F extends Function = () => void>(
 		};
 		document.addEventListener(event, handler);
 		return () => document.removeEventListener(event, handler);
-	}, [ref]);
+	}, [ref, callback, event]);
 
 	return ref;
 };

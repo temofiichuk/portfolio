@@ -25,7 +25,7 @@ const Footer = ({ locale, ...props }: IFooter) => {
 			<Panel position={PanelPosition.BOTTOM}>
 				<p>{t("find_me_in")}</p>
 				{social.map(({ title, href, icon }) => (
-					<Link title={title} href={href}>
+					<Link key={title} title={title} href={href}>
 						<button>{icon}</button>
 					</Link>
 				))}

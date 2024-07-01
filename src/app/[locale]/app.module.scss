@@ -2,6 +2,27 @@
 	@apply flex rounded-base m-base h-full max-h-app min-w-app max-w-app border border-base-color;
 }
 
-.pageWrapper {
+.wrapper {
 	@apply flex flex-col min-h-full w-full;
+}
+
+.pageWrapper {
+	//@apply h-screen w-full overflow-y-scroll;
+	@apply h-full w-full max-h-page-wrapper max-w-page-wrapper overflow-y-scroll;
+
+	scrollbar-color: transparent var(--base-color);
+
+	&::-webkit-scrollbar {
+		width: 12px;
+	}
+	&::-webkit-scrollbar-track {
+		border-left: 1px solid var(--border-color-base);
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: #607b96;
+		border-left: 1px solid var(--border-color-base);
+		border-right: 1px solid var(--border-color-base);
+		//border-top: 1px solid var(--border-color-base);
+		//border-bottom: 1px solid var(--border-color-base);
+	}
 }

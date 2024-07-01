@@ -1,0 +1,26 @@
+.cursor {
+	animation: blinkingText 1s infinite;
+	@apply inline;
+}
+
+@keyframes blinkingText {
+	0% {
+		opacity: 1;
+	}
+
+	49% {
+		opacity: 1;
+	}
+
+	60% {
+		opacity: 0;
+	}
+
+	99% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

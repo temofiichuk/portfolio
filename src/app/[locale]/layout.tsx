@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "@/styles/globals.scss";
 import styles from "./app.module.scss";
-import type { ReactNode } from "react";
+import { ReactNode } from "react";
 import MainSidebar from "@/components/MainSidebar/MainSidebar";
 import { i18n } from "../../../i18n.config";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
@@ -46,11 +46,9 @@ export default async function RootLayout({
 					<main className={styles.main}>
 						<TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
 							<MainSidebar />
-							<div className={styles.pageWrapper}>
-								<Header className={"mb-auto"} route={route}>
-									Header
-								</Header>
-								{children}
+							<div className={styles.wrapper}>
+								<Header className={"mb-auto"} route={route} />
+								<div className={styles.pageWrapper}>{children}</div>
 								<Footer className={"mt-auto"} locale={locale} />
 							</div>
 						</TranslationsProvider>

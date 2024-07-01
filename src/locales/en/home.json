@@ -1,4 +1,6 @@
 {
-  "heading": "Hi!",
-  "greeting": "Have a great day!"
+  "hi": "Hi all. I am",
+  "name": "Mykhailo Temofiichuk",
+  "position": "Web Developer",
+  "github_advise": "You can also find me on my Github page"
 }
