@@ -1,7 +1,8 @@
 .languageSwitcher {
 	@apply flex;
+
 	.wrapper {
-		@apply right-[var(--margin-base)] top-[calc(var(--min-elm-size)+var(--margin-base)/2)] absolute transition-all ease-in-out grid grid-rows-[0fr] z-10;
+		@apply right-[var(--margin-base)]  absolute transition-all ease-in-out grid grid-rows-[0fr] z-10;
 
 		&[data-active="true"] {
 			@apply grid-rows-[1fr];
