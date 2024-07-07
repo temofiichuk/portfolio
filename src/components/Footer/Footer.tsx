@@ -1,9 +1,7 @@
-"use client";
 import styles from "./Footer.module.scss";
 import { HTMLAttributes } from "react";
 import Panel, { PanelPosition } from "@/components/Panel/Panel";
 import { Locale } from "../../../i18n.config";
-import { useTranslation } from "react-i18next";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import Link from "next/link";
 import {
@@ -13,21 +11,24 @@ import {
 	RiPuzzleFill,
 	RiTerminalBoxFill,
 } from "@remixicon/react";
+import initTranslations from "@/i18n";
 
 interface IFooter extends HTMLAttributes<HTMLElement> {
 	locale: Locale;
 }
 
-const social = [
+export const SOCIAL = [
 	{ title: "Linkedin", href: "/", icon: <RiLinkedinFill widths={20} /> },
 	{ title: "Github", href: "/", icon: <RiGithubFill widths={20} /> },
 ];
 
-const Footer = ({ locale, ...props }: IFooter) => {
-	const { t } = useTranslation();
+const namespace = ["app-layout"];
+
+const Footer = async ({ locale, ...props }: IFooter) => {
+	const { t } = await initTranslations(locale, namespace);
 
 	return (
-		<footer {...props} className={`${props.className} ${styles.footer}`}>
+		<footer {...props} className={`${props.className ?? ""} ${styles.footer}`}>
 			<Panel position={PanelPosition.BOTTOM}>
 				<button aria-label="open professional info" title="Open professional info">
 					<RiTerminalBoxFill widths={20} className={"hover:fill-icon-professional-info"} />
@@ -39,13 +40,15 @@ const Footer = ({ locale, ...props }: IFooter) => {
 					<RiGamepadFill widths={20} className={"hover:fill-icon-hobbies"} />
 				</button>
 				<p>{t("find_me_in")}</p>
-				{social.map(({ title, href, icon }) => (
+				{SOCIAL.map(({ title, href, icon }) => (
 					<Link key={title} title={title} href={href}>
-						<button>{icon}</button>
+						{icon}
 					</Link>
 				))}
-
-				<ThemeSwitcher />
+				<>
+					<ThemeSwitcher />
+					<p>UTF-8</p>
+				</>
 			</Panel>
 		</footer>
 	);

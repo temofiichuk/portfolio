@@ -15,7 +15,7 @@ interface IPanel extends PropsWithChildren {
 
 const Panel = ({ children, position, ...props }: IPanel) => {
 	return (
-		<div {...props} className={`${props.className} ${styles.panel}`} data-position={position}>
+		<div {...props} className={`${props.className ?? ""} ${styles.panel}`} data-position={position}>
 			<ul>
 				{Children.toArray(children).map((child, index) => (
 					<li key={index}>{child}</li>
