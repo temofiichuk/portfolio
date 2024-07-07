@@ -53,6 +53,7 @@
 		--border-color-base: var(--dark-border-color);
 		--theme-switcher-bg: var(--light-bg);
 		--text: var(--dark-text-color);
+		--hover-cursor: #ffffff;
 	}
 
 	// light mode
@@ -61,6 +62,7 @@
 		--border-color-base: var(--light-border-color);
 		--text: var(--light-text-color);
 		--theme-switcher-bg: var(--dark-bg);
+		--hover-cursor: #000000;
 	}
 }
 
@@ -97,10 +99,18 @@ body {
 	@apply bg-background text-base-color;
 }
 
-button {
-	@apply flex;
-}
-
 a {
 	@apply text-base-color hover:text-inherit;
+}
+
+h1 {
+	@apply text-2xl lg:text-6xl;
+}
+
+p {
+	@apply text-sm lg:text-base;
+}
+
+span {
+	@apply text-inherit;
 }

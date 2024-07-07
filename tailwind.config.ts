@@ -33,17 +33,31 @@ const config: Config = {
 			},
 			maxHeight: {
 				"app": "calc(100vh - var(--margin-base) * 2)",
-				"page-wrapper": "calc(100vh - (var(--margin-base) * 2) - (var(--min-elm-size) * 2))",
+				"page-wrapper": "calc(100vh - var(--margin-base) * 2 - var(--min-elm-size) * 2)",
+			},
+			height: {
+				"app": "calc(100vh - var(--margin-base) * 2)",
+				"mobile-page-wrapper": "calc(100vh - var(--margin-base) * 2 - var(--min-elm-size))",
 			},
 			maxWidth: {
 				"app": "calc(100vw - var(--margin-base) * 2)",
-				"page-wrapper": "calc(100vw - var(--margin-base) * 2 - var(--min-elm-size))",
+				"page-wrapper": "calc(100vw - var(--margin-base) * 2)",
+			},
+			width: {
+				app: "calc(100vw - var(--margin-base) * 2)",
 			},
 			minWidth: {
 				app: "var(--min-screen)",
 			},
 			borderColor: {
 				"base-color": "var(--border-color-base)",
+			},
+			fontSize: {
+				"sm": ["14px", "20px"],
+				"base": ["16px", "24px"],
+				"lg": ["20px", "28px"],
+				"xl": ["24px", "32px"],
+				"2xl": ["32px", "42px"],
 			},
 		},
 	},
@@ -52,7 +66,7 @@ const config: Config = {
 		plugin(function ({ addComponents }) {
 			addComponents({
 				".container-page": {
-					"maxWidth": "100%",
+					"maxWidth": "calc(100% - 30px)",
 					"@media (min-width: 640px)": {
 						maxWidth: "600px",
 					},

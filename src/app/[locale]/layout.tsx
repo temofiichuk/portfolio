@@ -44,10 +44,10 @@ export default async function RootLayout({
 				<ThemeProvider>
 					<main className={styles.main}>
 						<TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
-							<div className={styles.wrapper}>
-								<Header className={"mb-auto"} route={route} />
+							<div className={styles.appWrapper}>
+								<Header />
 								<div className={styles.pageWrapper}>{children}</div>
-								<Footer className={"mt-auto"} locale={locale} />
+								<Footer locale={locale} />
 							</div>
 						</TranslationsProvider>
 					</main>

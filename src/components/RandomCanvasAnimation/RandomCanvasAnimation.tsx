@@ -126,7 +126,7 @@ const RandomCanvasAnimation = (props: IRandomCanvasAnimation) => {
 
 			ctx.clearRect(0, 0, width, height);
 			ctx.save();
-			ctx.filter = `blur(${blur})`;
+			// ctx.filter = `blur(${blur})`;
 			ctx.beginPath();
 			setPoints(ctx, currentPoints1, nextPoints1, interpolationFactor);
 			ctx.closePath();

@@ -1,28 +1,39 @@
 .main {
-	@apply flex rounded-base m-base h-full max-h-app min-w-app max-w-app border border-base-color;
+	@apply flex rounded-base m-base h-full max-h-app min-w-app max-w-app border border-base-color overflow-hidden;
+
+	@supports (-webkit-touch-callout: none) {
+		/* CSS only for Safari on iOS */
+		max-height: calc(100dvh - 30px);
+	}
 }
 
-.wrapper {
+.appWrapper {
 	@apply flex flex-col min-h-full w-full;
+
+	header {
+		@apply mb-auto;
+	}
+
+	footer {
+		@apply mt-auto;
+	}
 }
 
 .pageWrapper {
-	//@apply h-screen w-full overflow-y-scroll;
-	@apply h-full w-full max-h-page-wrapper max-w-page-wrapper overflow-y-scroll;
+	@apply h-full w-full max-w-page-wrapper overflow-y-auto overflow-x-hidden;
 
-	scrollbar-color: transparent var(--base-color);
+	// scrollbar
+	scrollbar-color: transparent #607b96;
 
 	&::-webkit-scrollbar {
 		width: 12px;
+		border-left: 1px solid var(--border-color-base);
 	}
 	&::-webkit-scrollbar-track {
-		border-left: 1px solid var(--border-color-base);
 	}
 	&::-webkit-scrollbar-thumb {
 		background-color: #607b96;
 		border-left: 1px solid var(--border-color-base);
 		border-right: 1px solid var(--border-color-base);
-		//border-top: 1px solid var(--border-color-base);
-		//border-bottom: 1px solid var(--border-color-base);
 	}
 }

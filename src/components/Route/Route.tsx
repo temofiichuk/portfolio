@@ -1,16 +1,10 @@
 "use client";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
-import Button from "@/components/Button/Button";
-import { HTMLAttributes, memo } from "react";
+import Link, { LinkProps } from "next/link";
+import { HTMLProps, memo } from "react";
 import { useTranslation } from "react-i18next";
 
-interface IRoute extends HTMLAttributes<HTMLButtonElement> {
-	href: string;
-	title: string;
-}
-
-const Route = memo(({ href, title, ...props }: IRoute) => {
+const Route = memo(({ href, children, ...props }: LinkProps & HTMLProps<HTMLAnchorElement>) => {
 	const pathname = usePathname();
 	const {
 		i18n: { languages },
@@ -20,10 +14,13 @@ const Route = memo(({ href, title, ...props }: IRoute) => {
 	const basePath = pathname.replace(regex, (match, p1) => (p1 ? "/" : match));
 
 	return (
-		<Link aria-current="page" href={href} data-active={href === basePath}>
-			<Button {...props} title={`link to the ${title}`}>
-				{title}
-			</Button>
+		<Link
+			href={href}
+			{...props}
+			aria-label={props.title}
+			aria-current="page"
+			data-active={href === basePath}>
+			{children}
 		</Link>
 	);
 });
