@@ -1,0 +1,11 @@
+.wrapper {
+	@apply flex flex-col overflow-y-auto h-full scrollbar-base lg:flex-row  lg:overflow-hidden;
+
+	> section {
+		@apply scrollbar-base lg:overflow-hidden lg:overflow-y-auto h-auto;
+	}
+}
+
+.title {
+	@apply -top-[1px] p-5 flex items-center border-t border-b border-base-color text-[var(--text)] lg:hidden;
+}

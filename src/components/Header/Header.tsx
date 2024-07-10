@@ -5,12 +5,9 @@ import Link from "next/link";
 import Panel, { PanelPosition } from "@/components/Panel/Panel";
 import { RiMacbookLine } from "@remixicon/react";
 import MobileSidebar from "@/components/MobileSidebar/MobileSidebar";
-import { Locale } from "../../../i18n.config";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 
-interface IHeader extends HTMLAttributes<HTMLHeadingElement> {
-	locale: Locale;
-}
+interface IHeader extends HTMLAttributes<HTMLHeadingElement> {}
 
 export const PAGES = [
 	{ title: "home.tsx", href: "/", label: "Home page" },
@@ -18,7 +15,7 @@ export const PAGES = [
 	{ title: "projects.tsx", href: "/projects", label: "Projects Page" },
 ];
 
-const Header = ({ locale, ...props }: IHeader) => {
+const Header = (props: IHeader) => {
 	return (
 		<header {...props} className={`${props.className ?? ""} ${styles.header}`}>
 			<Panel position={PanelPosition.TOP}>
@@ -42,7 +39,7 @@ const Header = ({ locale, ...props }: IHeader) => {
 					</Route>
 				))}
 				<>
-					<MobileSidebar locale={locale} className={styles.mobile} />
+					<MobileSidebar className={styles.mobile} />
 					<LanguageSwitcher className={styles.desktop} />
 				</>
 			</Panel>

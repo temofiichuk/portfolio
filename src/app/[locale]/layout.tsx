@@ -16,7 +16,7 @@ const ThemeProvider = dynamic(() => import("@/providers/ThemeProvider"), {
 	ssr: false,
 });
 
-const FIRA_CODE = Fira_Code({ subsets: ["latin"] });
+const FIRA_CODE = Fira_Code({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
 	title: "Web Developer",
@@ -31,7 +31,7 @@ const i18nNamespaces = ["app-layout"];
 
 export default async function RootLayout({
 	children,
-	params: { locale, route },
+	params: { locale },
 }: Readonly<{
 	children: ReactNode;
 	params: Params;

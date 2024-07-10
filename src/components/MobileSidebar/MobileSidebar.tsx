@@ -4,17 +4,14 @@ import { RiMenu3Fill } from "@remixicon/react";
 import { HTMLAttributes, memo, useState } from "react";
 import Route from "@/components/Route/Route";
 import { PAGES } from "@/components/Header/Header";
-import { Locale } from "../../../i18n.config";
 import Panel, { PanelPosition } from "@/components/Panel/Panel";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 
-interface IMobileSidebar extends HTMLAttributes<HTMLElement> {
-	locale: Locale;
-}
+interface IMobileSidebar extends HTMLAttributes<HTMLElement> {}
 
-const MobileSidebar = ({ locale, ...props }: IMobileSidebar) => {
+const MobileSidebar = (props: IMobileSidebar) => {
 	const [open, setOpen] = useState(false);
 
 	const { t } = useTranslation();

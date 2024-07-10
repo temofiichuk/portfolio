@@ -53,11 +53,11 @@ const config: Config = {
 				"base-color": "var(--border-color-base)",
 			},
 			fontSize: {
-				"sm": ["14px", "20px"],
-				"base": ["16px", "24px"],
-				"lg": ["20px", "28px"],
-				"xl": ["24px", "32px"],
-				"2xl": ["32px", "42px"],
+				"sm": "14px",
+				"base": "16px",
+				"lg": "20px",
+				"xl": "24px",
+				"2xl": "32px",
 			},
 		},
 	},
@@ -81,6 +81,23 @@ const config: Config = {
 					},
 					"@media (min-width: 1536px)": {
 						maxWidth: "1450px",
+					},
+				},
+				".scrollbar-base": {
+					"scrollbar-color": "transparent #607b96",
+					"&::-webkit-scrollbar": {
+						"width": "12px",
+						"border-left": "1px solid var(--border-color-base)",
+					},
+					"&::-webkit-scrollbar-thumb": {
+						"background-color": "#607b96",
+						"border-left": "1px solid var(--border-color-base)",
+						"border-right": "1px solid var(--border-color-base)",
+					},
+					"@media (max-width: 1024px)": {
+						"&::-webkit-scrollbar": {
+							width: "6px",
+						},
 					},
 				},
 			});

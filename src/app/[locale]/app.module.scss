@@ -20,7 +20,7 @@
 }
 
 .pageWrapper {
-	@apply h-full w-full max-w-page-wrapper overflow-y-auto overflow-x-hidden;
+	@apply h-full w-full max-w-page-wrapper;
 
 	// scrollbar
 	scrollbar-color: transparent #607b96;

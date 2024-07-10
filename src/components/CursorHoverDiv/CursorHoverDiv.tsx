@@ -19,11 +19,6 @@ enum ActionType {
 	SHOW,
 }
 
-interface Action {
-	type: ActionType;
-	payload?: number;
-}
-
 interface State {
 	hideAnimation: boolean;
 	show: boolean;

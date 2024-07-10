@@ -3,7 +3,7 @@ import TranslationsProvider from "@/providers/TranslationsProvider";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import HomeBanner from "@/components/HomeBanner/HomeBanner";
 
-interface IPage {
+export interface IPage {
 	params: Params;
 }
 
