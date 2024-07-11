@@ -19,7 +19,7 @@ interface IHomeBanner {
 const HomeBanner = async ({ locale }: IHomeBanner) => {
 	const { t } = await initTranslations(locale, ["home"]);
 	return (
-		<section className={styles.banner}>
+		<div className={styles.banner}>
 			<div className={styles.wrapper}>
 				<div className={styles.content}>
 					<Typewriter speed={30}>
@@ -54,7 +54,7 @@ const HomeBanner = async ({ locale }: IHomeBanner) => {
 				</div>
 			</div>
 			<RandomCanvasAnimation className={styles.anima} />
-		</section>
+		</div>
 	);
 };
 

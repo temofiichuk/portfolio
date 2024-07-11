@@ -1,10 +1,10 @@
 .main {
 	@apply flex rounded-base m-base h-full max-h-app min-w-app max-w-app border border-base-color overflow-hidden;
-
-	@supports (-webkit-touch-callout: none) {
-		/* CSS only for Safari on iOS */
-		max-height: calc(100dvh - 30px);
-	}
+	//
+	//@supports (-webkit-touch-callout: none) {
+	//	/* CSS only for Safari on iOS */
+	//	max-height: calc(100dvh - 30px);
+	//}
 }
 
 .appWrapper {
@@ -21,19 +21,16 @@
 
 .pageWrapper {
 	@apply h-full w-full max-w-page-wrapper;
+}
 
-	// scrollbar
-	scrollbar-color: transparent #607b96;
+.wrapper {
+	@apply flex flex-col overflow-y-auto h-full scrollbar-base lg:flex-row  lg:overflow-hidden;
 
-	&::-webkit-scrollbar {
-		width: 12px;
-		border-left: 1px solid var(--border-color-base);
+	> section {
+		@apply scrollbar-base lg:overflow-hidden lg:overflow-y-auto h-auto;
 	}
-	&::-webkit-scrollbar-track {
-	}
-	&::-webkit-scrollbar-thumb {
-		background-color: #607b96;
-		border-left: 1px solid var(--border-color-base);
-		border-right: 1px solid var(--border-color-base);
-	}
+}
+
+.title {
+	@apply -top-[1px] p-5 flex items-center border-t border-b border-base-color text-[var(--text)] lg:hidden;
 }

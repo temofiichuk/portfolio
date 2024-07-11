@@ -12,7 +12,7 @@ const LineCounter = ({ children, ...props }: ILineCounter) => {
 		if (!ref.current) return;
 		const content = ref.current;
 		const countLines = () => {
-			if (!ref.current) return;
+			if (!content) return;
 			const computedStyle = window.getComputedStyle(content);
 			const { height, lineHeight } = computedStyle;
 			setLines(Math.ceil(parseInt(height) / parseInt(lineHeight)));

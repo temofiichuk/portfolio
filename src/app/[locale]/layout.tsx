@@ -11,6 +11,7 @@ import TranslationsProvider from "@/providers/TranslationsProvider";
 import initTranslations from "@/i18n";
 import dynamic from "next/dynamic";
 import Footer from "@/components/Footer/Footer";
+import Title from "@/components/Title/Title";
 
 const ThemeProvider = dynamic(() => import("@/providers/ThemeProvider"), {
 	ssr: false,
@@ -46,7 +47,12 @@ export default async function RootLayout({
 						<TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
 							<div className={styles.appWrapper}>
 								<Header />
-								<div className={styles.pageWrapper}>{children}</div>
+								<div className={styles.pageWrapper}>
+									<div className={styles.wrapper}>
+										<Title className={styles.title} />
+										{children}
+									</div>
+								</div>
 								<Footer locale={locale} />
 							</div>
 						</TranslationsProvider>

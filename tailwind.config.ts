@@ -32,7 +32,7 @@ const config: Config = {
 				base: "var(--border-radius-base)",
 			},
 			maxHeight: {
-				"app": "calc(100vh - var(--margin-base) * 2)",
+				"app": "calc(100dvh - var(--margin-base) * 2)",
 				"page-wrapper": "calc(100vh - var(--margin-base) * 2 - var(--min-elm-size) * 2)",
 			},
 			height: {

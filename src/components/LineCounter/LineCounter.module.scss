@@ -1,15 +1,12 @@
 .wrapper {
-	@apply flex text-base h-auto min-h-[calc(100dvh-353px)] lg:min-h-full mb-10;
-}
-
-@container sidebar (max-width: 500px) {
-	background: white;
+	//@apply flex text-base h-full lg:min-h-full mb-10;
+	@apply flex text-base h-auto min-h-[calc(100dvh-227px)] lg:min-h-full mb-10;
 }
 
 .lines {
-	@apply flex flex-col items-end border-r border-base-color p-2.5;
+	@apply flex flex-col items-end border-r border-base-color p-2.5 -mb-5;
 }
 
 .content {
-	@apply m-2.5 h-max inline-block;
+	@apply m-2.5 h-max;
 }

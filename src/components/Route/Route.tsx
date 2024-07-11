@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link, { LinkProps } from "next/link";
-import { HTMLProps, memo, useEffect } from "react";
+import { HTMLProps, memo } from "react";
 import { useTranslation } from "react-i18next";
 
 const Route = memo(({ href, children, ...props }: LinkProps & HTMLProps<HTMLAnchorElement>) => {
@@ -12,10 +12,6 @@ const Route = memo(({ href, children, ...props }: LinkProps & HTMLProps<HTMLAnch
 
 	const regex = new RegExp(`^\\/(${languages.join("|")})(\\/|$)|^\\/(?![^\\/])$`, "g");
 	const basePath = pathname.replace(regex, (match, p1) => (p1 ? "/" : match));
-
-	useEffect(() => {
-		console.log(basePath.startsWith(href), href, basePath);
-	}, []);
 
 	return (
 		<Link

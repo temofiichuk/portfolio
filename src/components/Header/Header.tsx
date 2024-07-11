@@ -9,10 +9,12 @@ import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 
 interface IHeader extends HTMLAttributes<HTMLHeadingElement> {}
 
+export const extension = ".tsx";
+
 export const PAGES = [
-	{ title: "home.tsx", href: "/", label: "Home page" },
-	{ title: "about_me.tsx", href: "/about-me", label: "About Me Page" },
-	{ title: "projects.tsx", href: "/projects", label: "Projects Page" },
+	{ title: `home${extension}`, href: "/", label: "Home page" },
+	{ title: `about_me${extension}`, href: "/about-me", label: "About Me Page" },
+	{ title: `projects${extension}`, href: "/projects", label: "Projects Page" },
 ];
 
 const Header = (props: IHeader) => {
