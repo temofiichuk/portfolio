@@ -9,7 +9,7 @@ async function Bio({ params: { locale } }: IPage) {
 
 	return (
 		<LineCounter className={"h-full"}>
-			<p> // personal-info/bio </p>
+			<p> {`// personal-info/bio`} </p>
 			<br />
 			{t("bio")}
 		</LineCounter>

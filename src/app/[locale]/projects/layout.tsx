@@ -1,12 +1,16 @@
 import { PropsWithChildren } from "react";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import Filter from "@/components/Filter/Filter";
+import FilterProvider from "@/providers/FilterProvider";
 
 const Layout = async ({ children }: PropsWithChildren) => {
 	return (
-		<>
-			<Sidebar>filter</Sidebar>
+		<FilterProvider>
+			<Sidebar>
+				<Filter />
+			</Sidebar>
 			<section>{children}</section>
-		</>
+		</FilterProvider>
 	);
 };
 

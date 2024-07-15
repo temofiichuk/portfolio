@@ -43,20 +43,16 @@ export default async function RootLayout({
 		<html lang={locale} dir={dir(locale)} suppressHydrationWarning={true}>
 			<body className={FIRA_CODE.className}>
 				<ThemeProvider>
-					<main className={styles.main}>
+					<div className={styles.appWrapper}>
 						<TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
-							<div className={styles.appWrapper}>
-								<Header />
-								<div className={styles.pageWrapper}>
-									<div className={styles.wrapper}>
-										<Title className={styles.title} />
-										{children}
-									</div>
-								</div>
-								<Footer locale={locale} />
+							<Header />
+							<div className={styles.pageWrapper}>
+								<Title className={styles.title} />
+								{children}
 							</div>
+							<Footer locale={locale} />
 						</TranslationsProvider>
-					</main>
+					</div>
 				</ThemeProvider>
 			</body>
 		</html>

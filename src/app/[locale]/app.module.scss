@@ -1,14 +1,5 @@
-.main {
-	@apply flex rounded-base m-base h-full max-h-app min-w-app max-w-app border border-base-color overflow-hidden;
-	//
-	//@supports (-webkit-touch-callout: none) {
-	//	/* CSS only for Safari on iOS */
-	//	max-height: calc(100dvh - 30px);
-	//}
-}
-
 .appWrapper {
-	@apply flex flex-col min-h-full w-full;
+	@apply flex flex-col h-screen w-screen max-h-app min-w-app max-w-app rounded-base m-base border border-base-color overflow-hidden;
 
 	header {
 		@apply mb-auto;
@@ -20,15 +11,7 @@
 }
 
 .pageWrapper {
-	@apply h-full w-full max-w-page-wrapper;
-}
-
-.wrapper {
-	@apply flex flex-col overflow-y-auto h-full scrollbar-base lg:flex-row  lg:overflow-hidden;
-
-	> section {
-		@apply scrollbar-base lg:overflow-hidden lg:overflow-y-auto h-auto;
-	}
+	@apply flex flex-col overflow-hidden h-full w-full lg:flex-row;
 }
 
 .title {

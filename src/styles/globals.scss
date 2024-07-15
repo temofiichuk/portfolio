@@ -20,6 +20,7 @@
 
 		--active-page-border-color: #fea55f;
 		--link-color: #fea55f;
+		--link-hover-color: #e99287;
 		--keyword-color: #4d5bce;
 		--variable-color: #43d9ad;
 		--sign-color: #ffffff;
@@ -45,7 +46,7 @@
 		--border-radius-base: 15px;
 		--margin-base: 15px;
 		--input-drop-shadow: drop-shadow(0 0 2px rgba(96, 123, 150, 0.3));
-		--min-screen: 360px;
+		--min-screen: 220px;
 		--min-elm-size: 32px;
 
 		// dark mode
@@ -54,6 +55,11 @@
 		--theme-switcher-bg: var(--light-bg);
 		--text: var(--dark-text-color);
 		--hover-cursor: #ffffff;
+
+		// mobile
+		@media (max-width: 767px) {
+			--margin-base: 7px;
+		}
 	}
 
 	// light mode
@@ -63,27 +69,23 @@
 		--text: var(--light-text-color);
 		--theme-switcher-bg: var(--dark-bg);
 		--hover-cursor: #000000;
+		--bg-scrollbar: var(--light-bg);
 	}
 }
 
-// scrollbar
-root {
-	--dark-bg: #010c15;
-	--light-bg: #fafafa;
-	--base-color: #607b96;
-
-	--dark-border-color: #1e2d3d;
-	--light-border-color: #b8c7d7;
-
-	// dark mode
-	--bg-scrollbar: var(--dark-bg);
-	--border-color-base: var(--dark-border-color);
-}
-
-.light {
-	--bg-scrollbar: var(--light-bg);
-	--border-color-base: var(--light-border-color);
-}
+//// scrollbar
+//root {
+//	--dark-bg: #010c15;
+//	--light-bg: #fafafa;
+//	--base-color: #607b96;
+//
+//	--dark-border-color: #1e2d3d;
+//	--light-border-color: #b8c7d7;
+//
+//	// dark mode
+//	--bg-scrollbar: var(--dark-bg);
+//	--border-color-base: var(--dark-border-color);
+//}
 
 html {
 	overflow: hidden;
@@ -100,13 +102,13 @@ body {
 }
 
 a {
-	@apply text-base-color hover:text-inherit;
-}
-
-h1 {
-	@apply text-2xl lg:text-6xl;
+	@apply text-inherit hover:text-[var(--link-hover-color)];
 }
 
 span {
 	@apply text-inherit;
+}
+
+*:hover {
+	@apply transition duration-300;
 }
