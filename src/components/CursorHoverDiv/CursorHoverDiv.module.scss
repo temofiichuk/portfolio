@@ -1,41 +1,27 @@
 .cursor {
 	@apply w-20 h-20 z-10 rounded-full bg-white absolute mix-blend-difference touch-none cursor-none pointer-events-none border-2 border-blue-700;
 	transform: translate3d(0, 0, 0);
-	animation: rubberband 800ms alternate ease-out;
 }
 
-//.show {
-//	@apply w-20 h-20;
-//	animation: rubberband 800ms alternate ease-out;
-//}
-
 .hide {
-	width: 0;
-	height: 0;
-	border: none;
-	animation: hide 200ms alternate ease-out;
+	@apply w-0 h-0 border-none animate-[hide_200ms_alternate_ease-out];
 }
 
 @keyframes hide {
 	from {
-		width: 5rem;
-		height: 5rem;
+		@apply w-20 h-20;
 	}
 	to {
-		width: 0;
-		height: 0;
+		@apply w-0 h-0;
 	}
 }
 
 @keyframes rubberband {
 	0% {
-		width: 0;
-		height: 0;
+		@apply w-0 h-0;
 	}
 	20% {
-		width: 5rem;
-		height: 5rem;
-		transform: scaleX(1);
+		@apply w-20 h-20 scale-100;
 	}
 	40% {
 		transform: scaleX(1.12) scaleY(0.75);

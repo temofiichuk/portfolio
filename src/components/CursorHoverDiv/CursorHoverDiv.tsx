@@ -2,9 +2,11 @@
 import styles from "./CursorHoverDiv.module.scss";
 import {
 	HTMLAttributes,
+	memo,
 	MouseEvent,
 	PropsWithChildren,
 	TouchEvent,
+	useCallback,
 	useReducer,
 	useRef,
 	useState,
@@ -32,7 +34,7 @@ function reducer(state: State, action: ActionType) {
 		case ActionType.HIDE:
 			return { ...state, show: false, hideAnimation: false };
 		case ActionType.HIDE_ANIMATION:
-			return { ...state, hideAnimation: true };
+			return { ...state, hideAnimation: true, show: true };
 		default:
 			return state;
 	}
@@ -45,46 +47,47 @@ const CursorHoverDiv = ({ children, ...props }: ICursorHover) => {
 	const [state, dispatch] = useReducer(reducer, { hideAnimation: false, show: false });
 
 	const ref = useRef(null);
+	const timeoutRef = useRef<NodeJS.Timeout>();
 
-	const mouseMoveHandler = (e: MouseEvent<HTMLElement>) => {
-		const key = setTimeout(() => {
+	const setPoints = useCallback(
+		(clientX: number, clientY: number, top: number = 0) => {
 			if (!state.show) dispatch(ActionType.SHOW);
 			if (!ref.current) return;
 			const target = ref.current as HTMLDivElement;
 			const targetRect = target.getBoundingClientRect();
 
-			setCoords({
-				x: e.clientX - targetRect.left - 40,
-				y: e.clientY - targetRect.top - 40,
-			});
-		}, DELAY);
+			timeoutRef.current = setTimeout(() => {
+				const updateCoords = () => {
+					setCoords({
+						x: clientX - targetRect.left - 40,
+						y: clientY - targetRect.top - 40 - top,
+					});
+				};
 
-		return () => clearTimeout(key);
-	};
+				requestAnimationFrame(updateCoords);
+			}, DELAY);
+		},
+		[state.show]
+	);
 
-	const touchMoveHandler = (e: TouchEvent<HTMLElement>) => {
-		const key = setTimeout(() => {
-			if (!state.show) dispatch(ActionType.SHOW);
-			if (!ref.current) return;
-			const target = ref.current as HTMLDivElement;
-			const targetRect = target.getBoundingClientRect();
+	const mouseMoveHandler = useCallback(
+		({ clientX, clientY }: MouseEvent<HTMLElement>) => setPoints(clientX, clientY),
+		[setPoints]
+	);
 
-			setCoords({
-				x: e.targetTouches[0].clientX - targetRect.left - 40,
-				y: e.targetTouches[0].clientY - targetRect.top - 80,
-			});
-		}, DELAY);
+	const touchMoveHandler = useCallback(
+		(e: TouchEvent<HTMLElement>) => {
+			const { clientX, clientY } = e.targetTouches[0];
+			setPoints(clientX, clientY, 40);
+		},
+		[setPoints]
+	);
 
-		return () => clearTimeout(key);
-	};
-
-	const endHandler = () => {
+	const endHandler = useCallback(() => {
 		dispatch(ActionType.HIDE_ANIMATION);
-		const key = setTimeout(() => {
-			dispatch(ActionType.HIDE);
-		}, 800);
-		return () => clearTimeout(key);
-	};
+		clearTimeout(timeoutRef.current);
+		timeoutRef.current = setTimeout(() => dispatch(ActionType.HIDE), 800);
+	}, []);
 
 	return (
 		<div
@@ -96,7 +99,7 @@ const CursorHoverDiv = ({ children, ...props }: ICursorHover) => {
 			onTouchMove={touchMoveHandler}>
 			{state.show && (
 				<div
-					className={`${styles.cursor} ${state.hideAnimation && styles.hide}`}
+					className={`${styles.cursor} ${state.hideAnimation ? styles.hide : ""}`}
 					style={{ left: coords.x, top: coords.y }}
 				/>
 			)}
@@ -107,4 +110,4 @@ const CursorHoverDiv = ({ children, ...props }: ICursorHover) => {
 };
 
 CursorHoverDiv.displayName = "CursorHoverDiv";
-export default CursorHoverDiv;
+export default memo(CursorHoverDiv);
