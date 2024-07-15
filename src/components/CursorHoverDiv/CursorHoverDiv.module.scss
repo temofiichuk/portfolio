@@ -1,5 +1,6 @@
 .cursor {
-	@apply w-20 h-20 z-50 rounded-full bg-white absolute mix-blend-difference border-2 border-blue-700;
+	@apply w-20 h-20 z-50 rounded-full bg-white absolute mix-blend-difference border-2 border-blue-700
+	animate-[rubberband_1000ms_alternate_ease-out];
 	transform: translate3d(0, 0, 0);
 }
 
@@ -21,7 +22,7 @@
 		@apply w-0 h-0;
 	}
 	20% {
-		@apply w-20 h-20 scale-100;
+		@apply w-20 h-20;
 	}
 	40% {
 		transform: scaleX(1.12) scaleY(0.75);

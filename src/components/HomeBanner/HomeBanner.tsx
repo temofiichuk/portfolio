@@ -3,15 +3,9 @@ import styles from "./HomeBanner.module.scss";
 import { Locale } from "../../../i18n.config";
 import initTranslations from "@/i18n";
 import Link from "next/link";
-
-import dynamic from "next/dynamic";
 import CursorHoverDiv from "@/components/CursorHoverDiv/CursorHoverDiv";
 import Typewriter from "@/components/Typewriter/Typewriter";
 import { HTMLAttributes } from "react";
-
-const RandomCanvasAnimation = dynamic(
-	() => import("@/components/RandomCanvasAnimation/RandomCanvasAnimation")
-);
 
 interface IHomeBanner extends HTMLAttributes<HTMLElement> {
 	locale: Locale;
@@ -53,7 +47,6 @@ const HomeBanner = async ({ locale, ...props }: IHomeBanner) => {
 					</Typewriter>
 				</div>
 			</div>
-			<RandomCanvasAnimation className={styles.anima} />
 		</main>
 	);
 };

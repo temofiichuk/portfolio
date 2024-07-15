@@ -40,22 +40,6 @@
 	@apply text-lg lg:text-2xl;
 }
 
-.mainText {
-	@apply mb-10;
-	> * {
-		@apply touch-none pointer-events-none select-none inline-block;
-	}
-}
-
-.anima {
-	@apply absolute inset-0 -z-50 animate-[fadeIn_1s_ease-in-out] blur-xl sm:blur-2xl md:blur-3xl lg:blur-[84px] lg:pl-[25%];
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+.mainText > * {
+	@apply touch-none pointer-events-none select-none inline-block;
 }
