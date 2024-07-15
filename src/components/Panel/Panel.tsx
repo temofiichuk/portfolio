@@ -1,5 +1,5 @@
 import styles from "./Panel.module.scss";
-import { Children, HTMLAttributes, PropsWithChildren } from "react";
+import { Children, HTMLAttributes, memo, PropsWithChildren } from "react";
 
 export enum PanelPosition {
 	TOP,
@@ -26,4 +26,4 @@ const Panel = ({ children, position, ...props }: IPanel) => {
 };
 
 Panel.displayName = "Panel";
-export default Panel;
+export default memo(Panel);

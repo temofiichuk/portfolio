@@ -3,6 +3,7 @@ import {
 	Children,
 	createElement,
 	isValidElement,
+	memo,
 	ReactNode,
 	useEffect,
 	useMemo,
@@ -93,7 +94,18 @@ const Typewriter = ({
 		return () => {
 			timeoutKeys.map((key) => clearTimeout(key));
 		};
-	}, [currentTextIndex, timeDelay]);
+	}, [
+		currentTextIndex,
+		timeDelay,
+		loop,
+		onFinished,
+		onStart,
+		delay,
+		cursor,
+		random,
+		speed,
+		text.length,
+	]);
 
 	const renderChildrenWithTyping = (
 		children: ReactNode,
@@ -133,4 +145,4 @@ const Typewriter = ({
 };
 
 Typewriter.displayName = "Typewriter";
-export default Typewriter;
+export default memo(Typewriter);

@@ -3,7 +3,7 @@ import styles from "./LanguageSwitcher.module.scss";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { i18n as i18nConfig } from "../../../i18n.config";
-import React, { HTMLAttributes, MouseEvent, useEffect, useRef, useState } from "react";
+import { HTMLAttributes, memo, MouseEvent, useEffect, useRef, useState } from "react";
 import { RiTranslate2 } from "@remixicon/react";
 import useOutsideEvent from "@/hooks/useOutsideEvent";
 
@@ -58,10 +58,8 @@ const LanguageSwitcher = ({ popUpClassName, ...props }: ILanguageSwitcher) => {
 		const buttonRect = button.getBoundingClientRect();
 		const popup = refSwitcher.current;
 
-		// Default position: below the parent element
 		let { top, left } = buttonRect;
 
-		// // Adjust position if popup is out of viewport
 		if (left + popup.offsetWidth + button.offsetWidth >= window.innerWidth) {
 			left = (popup.offsetWidth - button.offsetWidth) * -1;
 		} else {
@@ -100,4 +98,4 @@ const LanguageSwitcher = ({ popUpClassName, ...props }: ILanguageSwitcher) => {
 };
 
 LanguageSwitcher.displayName = "LanguageSwitcher";
-export default LanguageSwitcher;
+export default memo(LanguageSwitcher);

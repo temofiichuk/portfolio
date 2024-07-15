@@ -2,7 +2,7 @@
 	@apply flex;
 
 	.wrapper {
-		@apply right-[var(--margin-base)]  absolute transition-all ease-in-out grid grid-rows-[0fr] z-10;
+		@apply right-[var(--margin-base)]  absolute transition-[grid] duration-300 ease-in-out grid grid-rows-[0fr] z-10 bg-[var(--background)] text-[var(--text)];
 
 		&[data-active="true"] {
 			@apply grid-rows-[1fr];
@@ -28,7 +28,7 @@
 			}
 
 			li[data-checked="true"] {
-				@apply bg-gray-100 bg-opacity-10;
+				@apply bg-[var(--)];
 			}
 		}
 	}

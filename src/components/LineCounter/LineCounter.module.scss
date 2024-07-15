@@ -1,6 +1,5 @@
 .wrapper {
-	//@apply flex text-base h-full lg:min-h-full mb-10;
-	@apply flex text-base h-auto min-h-[calc(100dvh-227px)] lg:min-h-full mb-10;
+	@apply flex text-base h-auto min-h-[calc(100dvh-227px)] lg:min-h-full;
 }
 
 .lines {
@@ -8,5 +7,5 @@
 }
 
 .content {
-	@apply m-2.5 h-max;
+	@apply m-2.5 h-max mb-10;
 }

@@ -1,6 +1,6 @@
 "use client";
 import styles from "./LineCounter.module.scss";
-import { HTMLAttributes, useEffect, useRef, useState } from "react";
+import { HTMLAttributes, memo, useEffect, useRef, useState } from "react";
 
 interface ILineCounter extends HTMLAttributes<HTMLElement> {}
 
@@ -17,12 +17,13 @@ const LineCounter = ({ children, ...props }: ILineCounter) => {
 			const { height, lineHeight } = computedStyle;
 			setLines(Math.ceil(parseInt(height) / parseInt(lineHeight)));
 		};
+
 		countLines();
 
 		window.addEventListener("resize", countLines);
 
 		return () => window.removeEventListener("resize", countLines);
-	}, [ref.current]);
+	}, []);
 
 	return (
 		<div {...props}>
@@ -43,4 +44,4 @@ const LineCounter = ({ children, ...props }: ILineCounter) => {
 };
 
 LineCounter.displayName = "LineCounter";
-export default LineCounter;
+export default memo(LineCounter);
