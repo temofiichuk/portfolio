@@ -3,7 +3,7 @@
 
 	@supports (-webkit-touch-callout: none) {
 		/* CSS only for Safari on iOS */
-		max-height: calc(100dvh - 62px);
+		max-height: calc(100dvh - 30px - var(--margin-base) * 2);
 	}
 
 	&[data-active="true"] {
