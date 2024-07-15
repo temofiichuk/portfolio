@@ -1,18 +1,10 @@
 "use client";
 import styles from "./ThemeSwitcher.module.scss";
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { RiContrastDropFill } from "@remixicon/react";
 
-interface IThemeSwitcher {}
-
-const ThemeSwitcher = (props: IThemeSwitcher) => {
-	const [mounted, setMounted] = useState(false);
+const ThemeSwitcher = () => {
 	const { setTheme, resolvedTheme } = useTheme();
-
-	useEffect(() => setMounted(true), []);
-
-	if (!mounted) return;
 
 	return (
 		<button

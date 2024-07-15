@@ -18,8 +18,7 @@ const Title = (props: ITitle) => {
 		const paths = pathname.replace(language === "en" ? "/" : `/${language}/`, "").split("/");
 		if (paths.length === 0) return;
 		setTitle(paths[0]);
-		console.log(pathname !== `/${language}` || pathname !== "/");
-	}, [pathname]);
+	}, [pathname, language]);
 
 	return (
 		pathname !== `/${language}` &&
