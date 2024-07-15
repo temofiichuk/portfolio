@@ -11,7 +11,7 @@
 }
 
 .pageWrapper {
-	@apply flex flex-col overflow-hidden h-full w-full lg:flex-row;
+	@apply flex flex-col grow  overflow-hidden h-full w-full lg:flex-row;
 }
 
 .title {

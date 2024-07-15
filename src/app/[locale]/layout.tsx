@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "@/styles/globals.scss";
-import styles from "./app.module.scss";
 import { ReactNode } from "react";
 import { i18n } from "../../../i18n.config";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { dir } from "i18next";
-import Header from "@/components/Header/Header";
 import TranslationsProvider from "@/providers/TranslationsProvider";
 import initTranslations from "@/i18n";
 import dynamic from "next/dynamic";
-import Footer from "@/components/Footer/Footer";
-import Title from "@/components/Title/Title";
+import App from "@/containers/App/App";
 
 const ThemeProvider = dynamic(() => import("@/providers/ThemeProvider"), {
 	ssr: false,
@@ -43,16 +40,9 @@ export default async function RootLayout({
 		<html lang={locale} dir={dir(locale)} suppressHydrationWarning={true}>
 			<body className={FIRA_CODE.className}>
 				<ThemeProvider>
-					<div className={styles.appWrapper}>
-						<TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
-							<Header />
-							<div className={styles.pageWrapper}>
-								<Title className={styles.title} />
-								{children}
-							</div>
-							<Footer locale={locale} />
-						</TranslationsProvider>
-					</div>
+					<TranslationsProvider namespaces={i18nNamespaces} locale={locale} resources={resources}>
+						<App locale={locale}>{children}</App>
+					</TranslationsProvider>
 				</ThemeProvider>
 			</body>
 		</html>
