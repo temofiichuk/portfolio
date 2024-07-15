@@ -1,0 +1,18 @@
+.header ul {
+	> li:has(> [data-active="true"]) {
+		@apply border-b-2 border-b-active-page-color;
+	}
+
+	> li:has(> .desktop),
+	.desktop {
+		@apply hidden lg:flex;
+	}
+
+	.mobile {
+		@apply block lg:hidden;
+	}
+
+	> li:has(> :nth-child(2)) {
+		@apply flex;
+	}
+}

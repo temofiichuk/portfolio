@@ -1,0 +1,35 @@
+.folder:not(:first-child) {
+	@apply pl-[24px];
+}
+
+.folder {
+	@apply flex flex-col gap-2 text-[var(--text)];
+}
+
+.folderIcon {
+	@apply text-[var(--violet)];
+}
+
+.fileIcon {
+	@apply text-[var(--orange)];
+}
+
+.file {
+	@apply flex items-center gap-2;
+
+	&:first-child {
+		@apply pl-[24px];
+	}
+}
+
+.wrapper {
+	@apply flex flex-col gap-2;
+
+	> button {
+		@apply flex items-center;
+
+		> :last-child {
+			@apply pl-2;
+		}
+	}
+}

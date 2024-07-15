@@ -1,0 +1,35 @@
+.languageSwitcher {
+	@apply flex;
+
+	.wrapper {
+		@apply right-[var(--margin-base)]  absolute transition-[grid] duration-300 ease-in-out grid grid-rows-[0fr] z-10 bg-[var(--background)] text-[var(--text)];
+
+		&[data-active="true"] {
+			@apply grid-rows-[1fr];
+		}
+
+		> div {
+			@apply overflow-hidden w-max;
+		}
+
+		ul {
+			@apply border border-base-color;
+
+			li {
+				@apply hover:bg-opacity-10 hover:bg-gray-100  border-inherit;
+
+				button {
+					@apply px-2.5 py-0.5 w-full h-full;
+				}
+			}
+
+			li:not(:last-child) {
+				@apply border-b;
+			}
+
+			li[data-checked="true"] {
+				@apply bg-[var(--)];
+			}
+		}
+	}
+}

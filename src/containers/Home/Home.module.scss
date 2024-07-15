@@ -1,0 +1,21 @@
+//.home {
+//	@apply z-10;
+//}
+
+.banner {
+	@apply container-page m-auto px-5 h-full w-full;
+}
+
+.anima {
+	@apply pointer-events-none p-16 absolute inset-0 animate-[fadeIn_1s_ease-in-out] blur-xl md:blur-3xl  md:pl-[25%];
+	transform: translate3d(0, 0, 0);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

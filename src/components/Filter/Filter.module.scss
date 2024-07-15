@@ -1,0 +1,10 @@
+.filter {
+	> li,
+	label {
+		@apply flex w-full h-max items-center gap-2;
+	}
+
+	input {
+		@apply w-max h-max;
+	}
+}

@@ -1,0 +1,45 @@
+.wrapper {
+	@apply w-full h-full flex items-center text-sm lg:text-base;
+}
+
+.content {
+	@apply w-full h-[clamp(40%,50%,500px)] flex flex-col justify-between;
+}
+
+.keyword,
+.position {
+	@apply text-[var(--keyword-color)];
+}
+
+.variable {
+	@apply text-[var(--variable-color)];
+}
+
+.sign {
+	@apply dark:text-[var(--sign-color)];
+}
+
+.link {
+	@apply text-[var(--link-color)];
+}
+
+.hi,
+.name {
+	@apply text-[var(--text)];
+}
+
+.hi {
+	@apply lg:text-[18px];
+}
+
+.name {
+	@apply text-3xl lg:text-6xl;
+}
+
+.position {
+	@apply text-lg lg:text-2xl;
+}
+
+.mainText > * {
+	@apply touch-none pointer-events-none select-none inline-block;
+}

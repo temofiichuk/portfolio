@@ -1,0 +1,19 @@
+.appWrapper {
+	@apply flex flex-col h-screen w-screen max-h-app min-w-app max-w-app rounded-base m-base border border-base-color overflow-hidden;
+
+	header {
+		@apply mb-auto;
+	}
+
+	footer {
+		@apply mt-auto;
+	}
+}
+
+.pageWrapper {
+	@apply flex flex-col grow  overflow-hidden h-full w-full lg:flex-row;
+}
+
+.title {
+	@apply -top-[1px] p-5 flex items-center border-t border-b border-base-color text-[var(--text)] lg:hidden;
+}

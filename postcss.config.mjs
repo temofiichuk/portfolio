@@ -1,8 +1,12 @@
 /** @type {import('postcss-load-config').Config} */
 const config = {
-  plugins: {
-    tailwindcss: {},
-  },
-}
+	plugins: {
+		"tailwindcss": {},
+		// "autoprefixer": {},
+		"postcss-preset-env": {
+			autoprefixer: { grid: false },
+		},
+	},
+};
 
-export default config
+export default config;

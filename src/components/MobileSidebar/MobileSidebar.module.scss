@@ -1,0 +1,28 @@
+.sidebar {
+	@apply absolute transition-[height] duration-500 ease-in-out h-0 z-20 right-0 w-[calc(100dvw-var(--margin-base)*2)]  lg:w-app flex flex-col bg-[var(--background)] border-b border-base-color overflow-hidden overflow-y-scroll;
+
+	@supports (-webkit-touch-callout: none) {
+		/* CSS only for Safari on iOS */
+		max-height: calc(100dvh - 30px - var(--margin-base) * 2);
+	}
+
+	&[data-active="true"] {
+		@apply h-mobile-page-wrapper;
+	}
+
+	.pages {
+		@apply border-t border-inherit;
+	}
+
+	.pages > li {
+		@apply border-b border-base-color;
+
+		> * {
+			@apply w-full h-full p-4 block;
+		}
+	}
+}
+
+.button {
+	@apply flex justify-center items-center h-full;
+}

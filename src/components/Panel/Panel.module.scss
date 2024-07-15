@@ -1,0 +1,64 @@
+.panel {
+	@apply h-[var(--min-elm-size)];
+
+	&[data-position="0"] > ul {
+		@apply border-b;
+	}
+	&[data-position="1"] > ul {
+		@apply border-t;
+	}
+	&[data-position="2"] > ul {
+		@apply border-r;
+	}
+	&[data-position="3"] > ul {
+		@apply border-l;
+	}
+
+	> ul {
+		@apply flex items-center w-full border-base-color h-full;
+
+		> li {
+			@apply flex items-center h-full border-inherit;
+
+			p {
+				@apply select-none touch-none pointer-events-none;
+			}
+
+			> * {
+				@apply border-inherit;
+			}
+
+			> div {
+				@apply h-full;
+			}
+
+			> *:not(div) {
+				@apply h-full px-6 flex justify-center items-center w-max;
+			}
+
+			div > button {
+				@apply w-full px-6;
+			}
+		}
+
+		> li:not(:last-child) {
+			@apply border-r;
+		}
+
+		> li:last-child {
+			@apply border-l ml-auto;
+
+			&:has(> :nth-child(2)) {
+				@apply px-0;
+
+				> *:not(> div) {
+					@apply px-6;
+				}
+
+				> *:not(:first-child) {
+					@apply border-l;
+				}
+			}
+		}
+	}
+}
