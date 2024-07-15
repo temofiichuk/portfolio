@@ -1,33 +1,9 @@
-.banner,
 .wrapper {
-	@apply h-full w-full text-balance;
-}
-
-.content,
-.extraWrapper {
-	@apply flex flex-col;
+	@apply w-full h-full flex items-center text-sm lg:text-base;
 }
 
 .content {
-	@media (max-height: 720px) {
-		@apply py-16;
-	}
-}
-
-.extraWrapper {
-	@apply text-sm lg:text-base;
-}
-
-.banner {
-	@apply relative container-page m-auto transition-all;
-}
-
-.wrapper {
-	@apply flex justify-start items-center m-auto gap-[20%];
-}
-
-.content {
-	@apply w-max h-full max-h-[480px] justify-between;
+	@apply w-full h-[clamp(40%,50%,500px)] flex flex-col justify-between;
 }
 
 .keyword,
@@ -56,25 +32,30 @@
 	@apply lg:text-[18px];
 }
 
+.name {
+	@apply text-3xl lg:text-6xl;
+}
+
 .position {
 	@apply text-lg lg:text-2xl;
 }
 
-.hi,
-.name,
-.position,
-.comment {
-}
-
 .mainText {
 	@apply mb-10;
-	p,
-	h1,
-	span {
-		@apply touch-none cursor-none pointer-events-none select-none;
+	> * {
+		@apply touch-none pointer-events-none select-none inline-block;
 	}
 }
 
 .anima {
-	@apply w-full absolute right-0 top-0 bottom-0  -z-50;
+	@apply absolute inset-0 -z-50 animate-[fadeIn_1s_ease-in-out] blur-xl sm:blur-2xl md:blur-3xl lg:blur-[84px] lg:pl-[25%];
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

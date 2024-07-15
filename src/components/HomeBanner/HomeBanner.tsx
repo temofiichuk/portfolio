@@ -7,36 +7,36 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import CursorHoverDiv from "@/components/CursorHoverDiv/CursorHoverDiv";
 import Typewriter from "@/components/Typewriter/Typewriter";
+import { HTMLAttributes } from "react";
 
 const RandomCanvasAnimation = dynamic(
 	() => import("@/components/RandomCanvasAnimation/RandomCanvasAnimation")
 );
 
-interface IHomeBanner {
+interface IHomeBanner extends HTMLAttributes<HTMLElement> {
 	locale: Locale;
 }
 
-const HomeBanner = async ({ locale }: IHomeBanner) => {
-	const { t } = await initTranslations(locale, ["home"]);
+const i18nNamespaces = ["home"];
+
+const HomeBanner = async ({ locale, ...props }: IHomeBanner) => {
+	const { t } = await initTranslations(locale, i18nNamespaces);
 	return (
-		<div className={styles.banner}>
+		<main {...props}>
 			<div className={styles.wrapper}>
 				<div className={styles.content}>
 					<Typewriter speed={30}>
 						<CursorHoverDiv className={styles.mainText}>
-							<p className={styles.hi}>{t("hi")}</p>
-							<h1 className={styles.name}>{t("name")}</h1>
-							<p className={styles.position}>
-								{"=> "}
-								{t("position")}
-							</p>
+							<h1>
+								<p className={styles.hi}>{t("hi")}</p>
+								<p className={styles.name}>{t("name")}</p>
+								<p className={styles.position}>{`=> ${t("position")}`}</p>
+							</h1>
 						</CursorHoverDiv>
 
 						{process.env.NEXT_PUBLIC_GITHUB_LINK && (
 							<div className={styles.extraWrapper}>
-								<p className={styles.comment}>
-									{"//"} {t("github_advise")}
-								</p>
+								<p className={styles.comment}>{`// ${t("github_advise")}`}</p>
 								<p>
 									<span className={styles.keyword}>const </span>
 									<span className={styles.variable}>gitHubLink </span>
@@ -54,7 +54,7 @@ const HomeBanner = async ({ locale }: IHomeBanner) => {
 				</div>
 			</div>
 			<RandomCanvasAnimation className={styles.anima} />
-		</div>
+		</main>
 	);
 };
 
