@@ -1,39 +1,32 @@
 "use client";
-import { HTMLAttributes, memo, useLayoutEffect, useRef } from "react";
 import styles from "./RandomCanvasAnimation.module.scss";
+import { HTMLAttributes, useEffect, useRef } from "react";
 
-type Shape = (ctx: CanvasRenderingContext2D, progress: number) => void;
 type ShapePoints = { x: number; y: number }[];
+
+type Shape = {
+	currentColor: string;
+	nextColor: string;
+	currentPoints: ShapePoints;
+	nextPoints: ShapePoints;
+};
 
 interface IRandomCanvasAnimation extends HTMLAttributes<HTMLDivElement> {}
 
-function getRandomNumber(min: number, max: number, fix: number) {
-	const random = Math.random() * (max - min) + min;
-	const rounded = Math.round(random * 1000) / 1000;
-	return +rounded.toFixed(fix);
-}
+const getRandomNumber = (min: number, max: number) =>
+	Math.round((Math.random() * (max - min) + min) * 1000) / 1000;
 
-function getRandomColor() {
-	const letters = "0123456789ABCDEF";
-	let color = "#";
-	for (let i = 0; i < 6; i++) {
-		color += letters[Math.floor(Math.random() * 16)];
-	}
-	return color;
-}
+const getRandomColor = () =>
+	`#${Math.floor(Math.random() * 16777215)
+		.toString(16)
+		.padStart(6, "0")}`;
 
-const interpolateColor = (color1: string, color2: string, factor: number) => {
-	const hex = (x: number) => x.toString(16).padStart(2, "0");
-	const r1 = parseInt(color1.slice(1, 3), 16);
-	const g1 = parseInt(color1.slice(3, 5), 16);
-	const b1 = parseInt(color1.slice(5, 7), 16);
-	const r2 = parseInt(color2.slice(1, 3), 16);
-	const g2 = parseInt(color2.slice(3, 5), 16);
-	const b2 = parseInt(color2.slice(5, 7), 16);
-	const r = Math.round(r1 + factor * (r2 - r1));
-	const g = Math.round(g1 + factor * (g2 - g1));
-	const b = Math.round(b1 + factor * (b2 - b1));
-	return `#${hex(r)}${hex(g)}${hex(b)}`;
+const interpolateColor = (c1: string, c2: string, f: number) => {
+	const c = (c: string) => parseInt(c.slice(1), 16);
+	const [r, g, b] = [c(c1) >> 16, (c(c1) >> 8) & 0xff, c(c1) & 0xff];
+	const [r2, g2, b2] = [c(c2) >> 16, (c(c2) >> 8) & 0xff, c(c2) & 0xff];
+	const hex = (n: number) => n.toString(16).padStart(2, "0");
+	return `#${hex(Math.round(r + f * (r2 - r)))}${hex(Math.round(g + f * (g2 - g)))}${hex(Math.round(b + f * (b2 - b)))}`;
 };
 
 const setPoints = (
@@ -70,11 +63,10 @@ const getRandomPoints = ({
 	startY,
 	endX,
 	endY,
-	fix = 3,
 }: RandomPoints): { x: number; y: number }[] => {
 	let shape = [];
 	for (let i = 0; i < corners; i++) {
-		shape.push({ x: getRandomNumber(startX, endX, fix), y: getRandomNumber(startY, endY, fix) });
+		shape.push({ x: getRandomNumber(startX, endX), y: getRandomNumber(startY, endY) });
 	}
 	return shape;
 };
@@ -82,20 +74,20 @@ const getRandomPoints = ({
 const MIN_BOUNDARY = 100;
 
 const RandomCanvasAnimation = (props: IRandomCanvasAnimation) => {
-	const canvasRef = useRef<HTMLCanvasElement | null>(null);
+	const canvasRef = useRef<HTMLCanvasElement>(null);
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
 
 		const ctx = canvas.getContext("2d");
 		if (!ctx) return;
 
-		const width = canvas.width;
-		const height = canvas.height;
+		const { width, height } = canvas;
 		const corners = 3;
-		const transitionDuration = 15000; // 15 seconds
-		const blur = `${MIN_BOUNDARY}px`;
+		const duration = 30000; // 30 seconds
+		const shapesNumber = 2;
+		let startTime = performance.now();
 
 		const boundary = {
 			startX: MIN_BOUNDARY,
@@ -104,52 +96,47 @@ const RandomCanvasAnimation = (props: IRandomCanvasAnimation) => {
 			endY: height - MIN_BOUNDARY,
 		};
 
-		const startShape1Points = getRandomPoints({ corners, ...boundary });
-		const startShape2Points = getRandomPoints({ corners, ...boundary });
+		const shapes: Shape[] = [];
 
-		let currentColor1 = getRandomColor();
-		let nextColor1 = getRandomColor();
-		let currentPoints1 = startShape1Points;
-		let nextPoints1 = getRandomPoints({ corners, ...boundary });
-
-		let currentColor2 = getRandomColor();
-		let nextColor2 = getRandomColor();
-		let currentPoints2 = startShape2Points;
-		let nextPoints2 = getRandomPoints({ corners, ...boundary });
-
-		let startTime = performance.now();
+		for (let i = 0; i < shapesNumber; i++) {
+			shapes.push({
+				currentColor: getRandomColor(),
+				nextColor: getRandomColor(),
+				currentPoints: getRandomPoints({ corners, ...boundary }),
+				nextPoints: getRandomPoints({ corners, ...boundary }),
+			});
+		}
 
 		// Animation function
 		const animate = (now: number) => {
 			const elapsed = now - startTime;
-			const interpolationFactor = Math.min(elapsed / transitionDuration, 1);
+			const interpolationFactor = Math.min(elapsed / duration, 1);
 
 			ctx.clearRect(0, 0, width, height);
+
+			for (let i = 0; i < shapesNumber; i++) {
+				const { currentColor, nextColor, currentPoints, nextPoints } = shapes[i];
+				ctx.beginPath();
+				setPoints(ctx, currentPoints, nextPoints, interpolationFactor);
+				ctx.closePath();
+				ctx.fillStyle = interpolateColor(currentColor, nextColor, interpolationFactor);
+				ctx.fill();
+			}
+
 			ctx.save();
-			// ctx.filter = `blur(${blur})`;
-			ctx.beginPath();
-			setPoints(ctx, currentPoints1, nextPoints1, interpolationFactor);
-			ctx.closePath();
-			ctx.fillStyle = interpolateColor(currentColor1, nextColor1, interpolationFactor);
-			ctx.fill();
-			ctx.beginPath();
-			setPoints(ctx, currentPoints2, nextPoints2, interpolationFactor);
-			ctx.closePath();
-			ctx.fillStyle = interpolateColor(currentColor2, nextColor2, interpolationFactor);
-			ctx.fill();
-			ctx.restore();
 
-			if (elapsed >= transitionDuration) {
+			if (elapsed >= duration) {
 				startTime = now;
-				currentColor1 = nextColor1;
-				currentPoints1 = nextPoints1;
-				nextColor1 = getRandomColor();
-				nextPoints1 = getRandomPoints({ corners, ...boundary });
 
-				currentColor2 = nextColor2;
-				currentPoints2 = nextPoints2;
-				nextColor2 = getRandomColor();
-				nextPoints2 = getRandomPoints({ corners, ...boundary });
+				for (let i = 0; i < shapesNumber; i++) {
+					const { nextColor, nextPoints } = shapes[i];
+					shapes[i] = {
+						currentColor: nextColor,
+						nextColor: getRandomColor(),
+						currentPoints: nextPoints,
+						nextPoints: getRandomPoints({ corners, ...boundary }),
+					};
+				}
 			}
 
 			requestAnimationFrame(animate);
@@ -161,9 +148,9 @@ const RandomCanvasAnimation = (props: IRandomCanvasAnimation) => {
 
 	return (
 		<div {...props}>
-			<canvas className={styles.anima} ref={canvasRef} width={870} height={824} />
+			<canvas className={styles.canvas} ref={canvasRef} width={870} height={824} />
 		</div>
 	);
 };
 
-export default memo(RandomCanvasAnimation);
+export default RandomCanvasAnimation;
