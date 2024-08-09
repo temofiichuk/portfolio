@@ -71,7 +71,7 @@ const getRandomPoints = ({
 	return shape;
 };
 
-const MIN_BOUNDARY = 100;
+const MIN_BOUNDARY = 25;
 
 const RandomCanvasAnimation = (props: IRandomCanvasAnimation) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -84,8 +84,8 @@ const RandomCanvasAnimation = (props: IRandomCanvasAnimation) => {
 		if (!ctx) return;
 
 		const { width, height } = canvas;
-		const corners = 3;
-		const duration = 30000; // 30 seconds
+		const corners = 4;
+		const duration = 10000; // 10s
 		const shapesNumber = 2;
 		let startTime = performance.now();
 
@@ -122,8 +122,6 @@ const RandomCanvasAnimation = (props: IRandomCanvasAnimation) => {
 				ctx.fillStyle = interpolateColor(currentColor, nextColor, interpolationFactor);
 				ctx.fill();
 			}
-
-			ctx.save();
 
 			if (elapsed >= duration) {
 				startTime = now;

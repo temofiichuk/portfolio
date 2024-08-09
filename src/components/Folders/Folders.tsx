@@ -17,7 +17,7 @@ export interface IFileNode {
 }
 
 interface IFolders {
-	structure: IFileNode[];
+	structure?: IFileNode[];
 }
 
 const extension = ".js";
@@ -27,12 +27,41 @@ const icons = {
 	file: <RiJavascriptLine widths={20} />,
 };
 
+const initStructure: IFileNode[] = [
+	{
+		name: "personal_info",
+		type: "folder",
+		children: [
+			{
+				name: "education",
+				type: "file",
+				route: "/about-me/personal-info/education",
+			},
+			{
+				name: "bio",
+				type: "file",
+				route: "/about-me/personal-info/bio",
+			},
+		],
+	},
+	{
+		name: "professional_info",
+		type: "file",
+		route: "/about-me/professional-info",
+	},
+	{
+		name: "contacts",
+		type: "file",
+		route: "/about-me/contacts",
+	},
+];
+
 const Folders = ({ structure }: IFolders) => {
 	const [open, setOpen] = useState(true);
 
 	return (
 		<ul className={styles.folder}>
-			{structure?.map((item) => {
+			{(structure || initStructure)?.map((item) => {
 				return (
 					<li key={item.name}>
 						{item.route ? (

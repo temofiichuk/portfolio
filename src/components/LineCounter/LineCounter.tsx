@@ -12,10 +12,9 @@ const LineCounter = ({ children, ...props }: ILineCounter) => {
 		if (!ref.current) return;
 		const content = ref.current;
 		const countLines = () => {
-			if (!content) return;
 			const computedStyle = window.getComputedStyle(content);
 			const { height, lineHeight } = computedStyle;
-			setLines(Math.ceil(parseInt(height) / parseInt(lineHeight)));
+			setLines(Math.ceil(parseFloat(height) / parseFloat(lineHeight)));
 		};
 
 		countLines();
@@ -23,7 +22,7 @@ const LineCounter = ({ children, ...props }: ILineCounter) => {
 		window.addEventListener("resize", countLines);
 
 		return () => window.removeEventListener("resize", countLines);
-	}, []);
+	}, [ref.current]);
 
 	return (
 		<div {...props}>

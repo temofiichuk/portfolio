@@ -56,9 +56,21 @@
 		--text: var(--dark-text-color);
 		--hover-cursor: #ffffff;
 
+		// dark mode colors of code block
+		--comment: #69676c;
+		--property: #b4b4b4;
+		--pre-color: #b4b4b4;
+		--string: #ffd700;
+		--variable: #ffffff;
+		--property-access: #7bd88f;
+		--keyword: #b15279;
+		--operator: #ffffff;
+		--linenumber: #b4b4b4;
+
 		// mobile
 		@media (max-width: 767px) {
 			--margin-base: 7px;
+			--font-size: 12px;
 		}
 	}
 
