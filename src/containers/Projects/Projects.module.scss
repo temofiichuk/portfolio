@@ -1,0 +1,14 @@
+.projects {
+	@apply w-full overflow-y-scroll scrollbar-base p-5 pb-10;
+
+	ul {
+		@apply w-full grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))]
+		grid-rows-[repeat(auto-fill,minmax(400px,1fr))]
+		gap-y-24 gap-x-6 justify-items-center pb-10;
+		grid-template-rows: repeat(auto-fit, 1fr);
+
+		li {
+			@apply h-auto w-full max-w-[300px] mx-auto;
+		}
+	}
+}

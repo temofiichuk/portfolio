@@ -7,8 +7,7 @@
 }
 
 .anima {
-	@apply pointer-events-none p-16 absolute inset-0 animate-[fadeIn_1s_ease-in-out] blur-xl md:blur-3xl  md:pl-[25%];
-	transform: translate3d(0, 0, 0);
+	@apply pointer-events-none p-16 absolute inset-0 animate-[fadeIn_1s_ease-in-out] blur-2xl md:blur-3xl xl:blur-[100px]  md:pl-[25%] xl:pr-[25%];
 }
 
 @keyframes fadeIn {

@@ -1,5 +1,7 @@
-const Projects = () => {
-	return <div>Projects</div>;
+import Projects from "@/containers/Projects/Projects";
+
+const ProjectsPage = () => {
+	return <Projects />;
 };
 
-export default Projects;
+export default ProjectsPage;
