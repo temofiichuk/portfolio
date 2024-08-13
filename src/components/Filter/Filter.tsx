@@ -7,15 +7,16 @@ import {
 	RiReactjsLine,
 	RiTailwindCssLine,
 } from "@remixicon/react";
-import { ChangeEvent, HTMLAttributes, ReactNode, useCallback, useContext } from "react";
-import { FilterContext } from "@/providers/FilterProvider";
+import { HTMLAttributes, ReactNode } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { STACK } from "@/containers/Projects/Projects";
 
 interface IFilterProps extends HTMLAttributes<HTMLElement> {}
 
 export interface IFilter {
 	title: string;
 	icon: ReactNode;
-	key: string;
+	key: STACK;
 }
 
 const FILTERS: IFilter[] = [
@@ -25,9 +26,9 @@ const FILTERS: IFilter[] = [
 		key: "react",
 	},
 	{
-		title: "Vanilla JS",
+		title: "JavaScript",
 		icon: <RiJavascriptLine widths={20} />,
-		key: "vanilla-js",
+		key: "javascript",
 	},
 	{
 		title: "HTML",
@@ -47,18 +48,25 @@ const FILTERS: IFilter[] = [
 ];
 
 const Filter = (props: IFilterProps) => {
-	const { filter, setFilter } = useContext(FilterContext);
+	const searchParams = useSearchParams();
+	const filtersParams = searchParams.get("filters");
+	const filters = filtersParams ? filtersParams.split(",") : [];
+	const pathname = usePathname();
+	const { replace } = useRouter();
 
-	const changeHandler = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			setFilter((prevState: any[]) =>
-				prevState.includes(e.target.value)
-					? prevState.filter((item) => item !== e.target.value)
-					: [...prevState, e.target.value]
-			);
-		},
-		[setFilter]
-	);
+	const handleFilter = (value: string) => {
+		const params = new URLSearchParams(searchParams);
+
+		if (filters?.includes(value)) {
+			filters.splice(filters.indexOf(value), 1);
+		} else {
+			filters.push(value);
+		}
+
+		params.set("filters", filters.join(","));
+
+		replace(`${pathname}?${params.toString()}`);
+	};
 
 	return (
 		<div {...props}>
@@ -67,8 +75,8 @@ const Filter = (props: IFilterProps) => {
 					return (
 						<li key={item.key}>
 							<input
-								checked={filter?.includes(item.key)}
-								onChange={changeHandler}
+								checked={filters?.includes(item.key)}
+								onChange={(e) => handleFilter(e.target.value)}
 								type="checkbox"
 								id={`filter.${item.key}`}
 								value={item.key}

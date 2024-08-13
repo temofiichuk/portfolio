@@ -15,6 +15,7 @@ export const PAGES = [
 	{ title: `home${extension}`, href: "/", label: "Home page" },
 	{ title: `about_me${extension}`, href: "/about-me", label: "About Me Page" },
 	{ title: `projects${extension}`, href: "/projects", label: "Projects Page" },
+	{ title: `contact_me${extension}`, href: "/contact-me", label: "Contact Me Page" },
 ];
 
 const Header = (props: IHeader) => {

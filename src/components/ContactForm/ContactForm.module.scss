@@ -1,0 +1,39 @@
+.contactForm {
+	@apply flex flex-col items-center lg:h-full lg:flex-row lg:justify-between;
+
+	.formWrapper,
+	.codeWrapper {
+		@apply w-full lg:h-full p-5;
+	}
+
+	.formWrapper {
+		@apply h-full
+		border-b border-base-color lg:border-b-0 lg:border-r
+		flex flex-col justify-center items-center gap-2.5;
+
+		.input {
+			@apply w-full max-w-[400px]  min-h-[var(--min-elm-size)] flex flex-col justify-center gap-2;
+		}
+
+		input,
+		textarea {
+			@apply w-full border border-base-color rounded-md px-2 py-1;
+
+			&:focus {
+				@apply border border-gray-600 outline outline-1;
+			}
+		}
+
+		textarea {
+			@apply h-32;
+		}
+	}
+
+	.codeWrapper {
+		@apply flex justify-center items-center h-max mt-auto lg:m-0 lg:h-full lg:overflow-auto lg:scrollbar-base lg:max-w-[50%];
+
+		> * {
+			@apply lg:h-full lg:max-h-max;
+		}
+	}
+}

@@ -12,6 +12,10 @@
 
 .pageWrapper {
 	@apply flex flex-col grow  overflow-hidden h-full w-full lg:flex-row;
+
+	section {
+		@apply overflow-y-auto scrollbar-base w-full h-full;
+	}
 }
 
 .title {
