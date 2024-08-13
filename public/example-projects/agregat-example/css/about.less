@@ -1,0 +1,1066 @@
+// COLORS
+
+@white: #fff;
+@red: #FF0031;
+@dark-red: #E2032E;
+@gray: #333333;
+@light-gray: #E5E5E5;
+@gray-text: #A9A9A9;
+@dark-gray-text: #737373;
+@dark-gray: #272628;
+@black: #000;
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+// HEADER 
+.about-header {
+
+    background: @dark-gray;
+    overflow: hidden;
+    position: relative;
+
+    .header-bg {
+        width: 1390px;
+        height: 800px;
+        background: @dark-red;
+        clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: -2%;
+        transform: translate(-50%);
+
+        .figure {
+            width: 500px;
+            height: 400px;
+            clip-path: polygon(45% 0, 55% 0, 100% 100%, 70% 80%, 30% 80%, 0 100%);
+            background: @dark-gray;
+        }
+    }
+
+    .container {
+        min-height: 800px;
+        position: relative;
+        display: flex;
+        // justify-content: space-between;
+        max-width: 100%;
+
+    }
+
+    .sociale {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin: 70px 70px 45px 70px;
+        width: 50px;
+
+        .text {
+            width: 40px;
+            max-height: 150px;
+            cursor: default;
+
+            span {
+                width: 40px;
+                height: 120px;
+                writing-mode: vertical-lr;
+                font-family: Acrom;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 16px;
+                letter-spacing: 0em;
+                text-align: left;
+                filter: blur(4px);
+                color: #737373;
+
+                &:hover {
+                    filter: blur(0);
+                }
+            }
+        }
+
+        .lang {
+            transform: rotate(180deg);
+            display: flex;
+            justify-content: center;
+            ;
+            width: 50px;
+            height: 40px;
+            padding-bottom: 50px;
+
+            span {
+                writing-mode: vertical-rl;
+                padding-top: 50px;
+                font-size: 14px;
+                cursor: pointer;
+                filter: blur(4px);
+                color: #737373;
+
+                &:hover {
+                    filter: blur(0);
+                }
+            }
+        }
+
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 30px;
+            filter: grayscale(100%) blur(4px);
+
+            &:hover {
+                filter: grayscale(100%) blur(0);
+            }
+        }
+    }
+
+    .wrapper {
+        width: 100vw;
+
+        .logo {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            position: absolute;
+            z-index: 9;
+
+
+            img {
+                cursor: pointer;
+                width: 1100px;
+                height: 20px;
+                padding-top: 30px;
+
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            padding-top: 230px;
+            width: 730px;
+            min-height: 250px;
+            z-index: 3;
+            cursor: default;
+
+            h1 {
+                font-size: 70px;
+                font-weight: 500;
+                line-height: 0.9;
+                text-transform: uppercase;
+            }
+        }
+
+        .subtitle {
+            z-index: 99;
+            position: relative;
+            left: 50%;
+            transform: translate(5%);
+            width: 50%;
+            color: #A9A9A9;
+            border-top: 1px solid #A9A9A9;
+
+            p {
+                padding-top: 30px;
+                width: 256px;
+                font-weight: 100;
+            }
+        }
+    }
+
+    .menu-open {
+        position: absolute;
+        right: 70px;
+        top: 0;
+        width: 80px;
+        height: 230px;
+        background: @red;
+        z-index: 101;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        button:nth-child(1) {
+            transform: scaleY(0.5);
+            cursor: pointer;
+        }
+
+        button:nth-child(1) span {
+            font-size: 70px;
+            color: @white;
+        }
+
+        button:nth-child(2) span {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-transform: uppercase;
+            margin-bottom: 55px;
+            color: @white;
+        }
+    }
+}
+
+
+// POINT 
+.hungary-point,
+.moscow-point,
+.serbia-point {
+    background: @dark-gray;
+    position: relative;
+    width: 100vw;
+    height: auto;
+
+    .container {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 800px;
+
+    }
+
+    .title {
+        padding-top: 455px;
+        width: 511px;
+        margin-right: 100px;
+        font-size: 50px;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: flex-start;
+
+        h3 span:nth-child(1) {
+            font-size: 80px;
+        }
+    }
+
+    .subtitle {
+        padding-top: 134px;
+        max-width: 300px;
+        margin-left: 130px;
+
+        h6 {
+            font-size: 30px;
+            font-weight: 500;
+            width: 400px;
+        }
+
+        p {
+            padding-top: 25px;
+            font-size: 16px;
+            color: @gray-text;
+            font-weight: 100;
+            line-height: 1.4;
+            letter-spacing: 1.5px;
+        }
+    }
+
+    .scroll-bar {
+        position: absolute;
+        top: 637px;
+    }
+}
+
+.name-location {
+    visibility: hidden;
+    width: 100px;
+    height: 50px;
+    background: @dark-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+        color: @gray-text;
+    }
+
+    span {
+        display: block;
+        position: relative;
+        bottom: -21px;
+        font-size: 12px;
+        color: @red;
+    }
+}
+
+
+.maps-point {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+
+    img {
+        position: absolute;
+        top: 70px;
+        left: 70px;
+    }
+}
+
+.elipse {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+
+    &>div {
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+
+        &>div {
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+
+            &>div {
+                width: 12px;
+                height: 12px;
+                background: @white;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+// HUNGARY-POINT 
+.hungary-point {
+
+    .elipse {
+        position: relative;
+        left: 50px;
+    }
+
+    .maps-serbia {
+        background: url(../img/maps-point/serbia-whiteSmall-maps.png) no-repeat center;
+        background-size: cover;
+        width: 116px;
+        height: 154px;
+        position: relative;
+        top: 200px;
+        left: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-hungary {
+        background: url(../img/maps-point/hungary-redBig-maps.svg) no-repeat center;
+        background-size: cover;
+        width: 301px;
+        height: 298px;
+        position: relative;
+        top: -50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-moscow {
+        background: url(../img/maps-point/moskow-whiteSmall-maps.svg) no-repeat center;
+        background-size: cover;
+        width: 112px;
+        height: 139px;
+        position: relative;
+        top: -130px;
+        left: -10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-serbia,
+    .maps-moscow,
+    img {
+        filter: blur(4px);
+
+        &:hover {
+            filter: blur(0);
+        }
+    }
+}
+
+// MOSKOW-POINT 
+.moscow-point {
+    .maps-serbia {
+        background: url(../img/maps-point/serbia-whiteSmall-maps.png) no-repeat center;
+        background-size: cover;
+        width: 116px;
+        height: 154px;
+        position: relative;
+        top: 200px;
+        left: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-moscow {
+        background: url(../img/maps-point/moskow-redBig-maps.svg) no-repeat center;
+        background-size: cover;
+        width: 240px;
+        height: 300px;
+        position: relative;
+        top: -30px;
+        left: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-hungary {
+        background: url(../img/maps-point/hungary-whiteSmall-maps.svg) no-repeat center;
+        background-size: cover;
+        width: 129px;
+        height: 128px;
+        position: relative;
+        top: -50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-serbia,
+    .maps-hungary,
+    img {
+        filter: blur(4px);
+
+        &:hover {
+            filter: blur(0);
+        }
+    }
+}
+
+// SERBIA-POINT 
+.serbia-point {
+
+    .maps-moscow {
+        background: url(../img/maps-point/moskow-whiteSmall-maps.svg) no-repeat center;
+        background-size: cover;
+        width: 112px;
+        height: 139px;
+        position: relative;
+        top: 150px;
+        left: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-serbia {
+        background: url(../img/maps-point/serbia-redBig-maps.svg) no-repeat center;
+        background-size: cover;
+        width: 257px;
+        height: 342px;
+        position: relative;
+        top: -100px;
+        left: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-hungary {
+        background: url(../img/maps-point/hungary-whiteSmall-maps.svg) no-repeat center;
+        background-size: cover;
+        width: 129px;
+        height: 128px;
+        position: relative;
+        top: -50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .maps-moscow,
+    .maps-hungary,
+    img {
+        filter: blur(4px);
+
+        &:hover {
+            filter: blur(0);
+        }
+    }
+}
+
+.facts {
+    min-height: 700px;
+
+    .facts-bg {
+        clip-path: polygon(0 10%, 60% 10%, 75% 100%, 0 100%);
+    }
+
+    .container .title {
+        padding-top: 0;
+    }
+}
+
+.our {
+    position: relative;
+    height: 900px;
+    background: @dark-gray;
+
+    .our-first {
+        position: relative;
+    }
+
+
+    .our-img {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        top: -200px;
+        z-index: 8;
+
+        .img {
+            background: url(../img/our/our-img.svg) no-repeat center;
+            background-size: cover;
+            width: 90%;
+            height: 670px;
+
+            p {
+                padding-top: 537px;
+                padding-left: 100px;
+                color: @white;
+                font-weight: 100;
+            }
+        }
+    }
+
+    .text {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        top: -190px;
+
+        .title {
+            width: 600px;
+            padding-left: 245px;
+            z-index: 9;
+            position: relative;
+            top: -100px;
+
+            h3 {
+                width: 600px;
+                text-transform: uppercase;
+                font-size: 75px;
+                line-height: 1;
+            }
+        }
+
+        .subtitle {
+            width: 470px;
+            padding-right: 135px;
+            color: @white;
+
+            p {
+                padding-top: 30px;
+                font-weight: 100;
+                font-size: 17px;
+                line-height: 25px;
+            }
+        }
+    }
+
+    .our-now {
+        position: relative;
+        z-index: 9;
+
+        .img {
+            background: url(../img/our/our-now-img.svg) no-repeat center;
+            background-size: cover;
+        }
+
+        .title {
+            top: -20px;
+        }
+
+    }
+
+    .slick-dots {
+        left: 0;
+    }
+
+    .slick-prev.slick-arrow {
+        background: url(../img/icon/prev.svg) no-repeat center;
+        background-size: cover;
+        width: 10px;
+        height: 15px;
+        font-size: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 661px;
+        left: 0;
+        margin-left: 408px;
+        z-index: 999;
+    }
+
+    .slick-next.slick-arrow {
+        background: url(../img/icon/next.svg) no-repeat center;
+        background-size: cover;
+        width: 10px;
+        height: 15px;
+        font-size: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 661px;
+        left: 0;
+        margin-left: 583px;
+        z-index: 999;
+    }
+}
+
+.our .scroll-bar {
+    position: absolute;
+    top: 400px;
+    left: 235px;
+
+}
+
+.red-information {
+    background: @red;
+    position: relative;
+
+    .container {
+        min-height: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        text-align: center;
+
+        P:nth-child(1) {
+            font-size: 75px;
+            font-weight: 700;
+        }
+
+        P:nth-child(2) {
+            font-size: 190px;
+            font-weight: 700;
+        }
+    }
+}
+
+.man {
+    background: #E5E5E5;
+    min-height: 875px;
+    position: relative;
+    z-index: -2;
+
+
+    .man-bg {
+        background: @white;
+        clip-path: polygon(0 0, 60% 0, 80% 100%, 0 100%);
+        width: 100%;
+        height: 577px;
+        position: absolute;
+        top: 183px;
+        left: 0;
+        z-index: -1;
+    }
+
+    .scroll-bar {
+        position: absolute;
+        width: 51%;
+        height: 100px;
+        top: 90px;
+        left: 49%;
+        background: transparent;
+        z-index: 4;
+
+        .scroll {
+            padding-left: 250px;
+        }
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+            position: relative;
+            padding-top: 193px;
+            left: 135px;
+            width: 530px;
+            top: -50px;
+            z-index: 9;
+
+            h3 {
+                font-size: 75px;
+                height: 210px;
+                text-transform: uppercase;
+                line-height: 1;
+            }
+
+            h6 {
+                font-size: 25px;
+                width: 300px;
+            }
+
+            p {
+                padding-top: 30px;
+                width: 250px;
+                height: auto;
+                padding-bottom: 20px;
+                color: @dark-gray-text;
+                font-weight: 100;
+                font-size: 14px;
+                line-height: 22px;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    .man-img {
+        background: @dark-gray;
+        width: 680px;
+        height: 800px;
+        clip-path: polygon(35% 0, 100% 0, 65% 100%, 0 100%);
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        z-index: 3;
+
+        .bg-line {
+            left: 50%;
+        }
+    }
+
+    .img {
+        background: url(../img/man/man-img.png) no-repeat center;
+        background-size: cover;
+        width: 612px;
+        height: 780px;
+        position: relative;
+        left: 50px;
+        top: 20px;
+
+
+    }
+
+    .subtitle {
+        width: 250px;
+        padding-top: 475px;
+        padding-right: 150px;
+
+        p {
+            width: 250px;
+            height: auto;
+            padding-bottom: 20px;
+            color: @dark-gray-text;
+            font-weight: 100;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 1px;
+        }
+
+        .red-btn {
+            padding-top: 0;
+            padding-left: 150px;
+            width: 100px;
+
+            img {
+                padding-left: 10px;
+            }
+        }
+    }
+}
+
+.organization {
+    min-height: 900px;
+    overflow: hidden;
+    background: @light-gray;
+    position: relative;
+    z-index: -2;
+
+    .organization-bg {
+        height: 500px;
+        width: 100%;
+        background: @white;
+        clip-path: polygon(30% 0, 100% 0, 100% 100%, 15% 100%);
+        position: absolute;
+        z-index: -1;
+    }
+
+    .title {
+        padding: 150px 0 0 135px;
+
+        h3 {
+            font-size: 75px;
+            text-transform: uppercase;
+            max-width: 800px;
+            line-height: 1;
+        }
+    }
+
+    .items {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 164px;
+        padding-top: 75px;
+
+        p {
+            font-size: 16px;
+            position: relative;
+            color: @gray;
+            width: 230px;
+            padding-right: 70px;
+            padding-bottom: 40px;
+
+            span {
+                font-weight: 700;
+            }
+
+            &::before {
+                content: "";
+                width: 10px;
+                height: 10px;
+                background: @red;
+                position: absolute;
+                left: -33px;
+                top: 5px;
+            }
+        }
+    }
+
+    .white-btn {
+        width: 100%;
+        height: 70px;
+        position: relative;
+        top: 20px;
+        left: 80%;
+        background: @red;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+
+        button {
+            padding-left: 40px;
+            color: @white;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            span div {
+                width: 15px;
+                height: 1px;
+                background: @white;
+                margin: 2px 20px;
+            }
+        }
+    }
+}
+
+.documents {
+    min-height: 1050px;
+    overflow: hidden;
+
+    .container {
+        max-width: 100%;
+    }
+
+    .content {
+        background: @dark-gray;
+        min-height: 800px;
+    }
+
+    .title {
+        padding: 120px 0 0 100px;
+
+        h3 {
+            color: @dark-gray-text;
+            font-size: 50px;
+            text-transform: uppercase;
+
+        }
+    }
+
+    .slider-doc {
+        display: flex;
+        width: 100%;
+        overflow-x: scroll;
+        margin-top: 60px;
+
+        .block {
+            min-width: 400px;
+            height: 485px;
+            margin-left: 20px;
+        }
+
+        .block:nth-child(1) {
+            margin-left: 50px;
+        }
+
+        .block:nth-child(3n+1) {
+            background: url(../img/documents/doc1.svg) no-repeat center;
+            background-size: cover;
+        }
+
+        .block:nth-child(2n+2) {
+            background: url(../img/documents/doc2.svg) no-repeat center;
+            background-size: cover;
+        }
+
+        .block:nth-child(3n+3) {
+            background: url(../img/documents/doc3.svg) no-repeat center;
+            background-size: cover;
+        }
+
+        .block:nth-child(5n+5) {
+            background: url(../img/documents/doc2.svg) no-repeat center;
+            background-size: cover;
+        }
+    }
+
+    .slider-doc::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .scroll-bar-bg {
+        background: @light-gray;
+        height: 250px;
+
+        .scroll-bar {
+            width: 100%;
+            height: 150px;
+            background: @red;
+            position: relative;
+            top: -50px;
+            left: 60%;
+            display: flex;
+            justify-content: flex-start;
+
+            .scroll {
+                padding-left: 100px;
+            }
+
+            .scroll-line {
+                background: @white;
+            }
+
+            .next {
+                background: url(../img/icon/next-white.svg) no-repeat center;
+                background-size: cover;
+            }
+
+            .prev {
+                background: url(../img/icon/prev-white.svg) no-repeat center;
+                background-size: cover;
+            }
+        }
+    }
+}
+
+// SLIDER-POINT
+.slick-dots {
+    position: absolute;
+    top: 663px;
+    left: 50%;
+    margin-left: 448px;
+
+}
+
+.slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 53px;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
+
+}
+
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 53px;
+    height: 20px;
+
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+
+}
+
+.slick-dots li button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 53px;
+    height: 1px;
+    background: @red;
+    opacity: 1;
+
+}
+
+.slick-dots li button:hover::before {
+    background: @white ;
+    transition: 350s, ease-in-out;
+
+}
+
+li.slick-active button:before {
+    background-color: #fff !important;
+}
+
+.slider-point {
+    position: relative;
+}
+
+.slider-point>div>button.slick-prev.slick-arrow {
+    background: url(../img/icon/prev.svg) no-repeat center;
+    background-size: cover;
+    width: 10px;
+    height: 15px;
+    font-size: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 661px;
+    left: 50%;
+    margin-left: 408px;
+    z-index: 999;
+}
+
+.slider-point>div>button.slick-next.slick-arrow {
+    background: url(../img/icon/next.svg) no-repeat center;
+    background-size: cover;
+    width: 10px;
+    height: 15px;
+    font-size: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 661px;
+    left: 50%;
+    margin-left: 633px;
+    z-index: 999;
+}

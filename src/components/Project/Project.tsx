@@ -19,7 +19,7 @@ interface IProject extends HTMLAttributes<HTMLElement> {
 const Project = ({ detail: { image, name, url, info, stack }, ...props }: IProject) => {
 	return (
 		<article {...props} className={styles.project}>
-			<div className={styles.image}>
+			<div className={styles.imageBox}>
 				<Image alt={name} src={image} width={400} height={200} />
 			</div>
 			<div className={styles.wrapper}>

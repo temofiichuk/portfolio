@@ -4,7 +4,11 @@
 	flex flex-col justify-between mt-12 w-full h-full p-5;
 
 	img {
-		@apply -top-12 rounded-base border-b my-auto;
+		@apply -top-12 rounded-base  my-auto;
+
+		::after {
+			@apply border-b w-full bottom-0;
+		}
 	}
 }
 .button {
@@ -12,4 +16,8 @@
 }
 .wrapper {
 	@apply flex flex-col items-center justify-around -mt-6 h-full;
+}
+
+.info {
+	@apply text-xs;
 }
