@@ -18,7 +18,7 @@ const useSend = (init?: IQuery): [(data: EmailTemplateProps) => void, Response] 
 
 	const fetchData = useCallback((data: EmailTemplateProps) => {
 		setState((prev) => ({ ...prev, loading: true }));
-		fetch(`${process.env.NEXT_PUBLIC_HOST}/api/send`, {
+		fetch(`api/send`, {
 			method: "POST",
 			...init,
 			body: JSON.stringify(data),
