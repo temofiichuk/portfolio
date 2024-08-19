@@ -1,5 +1,5 @@
 .appWrapper {
-	@apply flex flex-col h-screen w-screen max-h-app min-w-app max-w-app rounded-base m-base border border-base-color overflow-hidden;
+	@apply flex flex-col h-screen w-screen max-h-app min-w-app max-w-app rounded-base m-base border border-base-color overflow-hidden top-0;
 
 	header {
 		@apply mb-auto;
@@ -11,9 +11,9 @@
 }
 
 .pageWrapper {
-	@apply flex flex-col grow  overflow-hidden h-full w-full lg:flex-row;
+	@apply flex flex-col grow overflow-hidden h-full w-full lg:flex-row;
 
-	section {
+	section:not([class]) {
 		@apply overflow-y-auto scrollbar-base w-full h-full;
 	}
 }

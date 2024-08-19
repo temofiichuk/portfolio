@@ -33,11 +33,11 @@ const config: Config = {
 			},
 			maxHeight: {
 				"app": "calc(100dvh - var(--margin-base) * 2)",
-				"page-wrapper": "calc(100vh - var(--margin-base) * 2 - var(--min-elm-size) * 2)",
+				"page-wrapper": "calc(100dvh - var(--margin-base) * 2 - var(--min-elm-size) * 2)",
 			},
 			height: {
-				"app": "calc(100vh - var(--margin-base) * 2)",
-				"mobile-page-wrapper": "calc(100vh - var(--margin-base) * 2 - var(--min-elm-size))",
+				"app": "calc(100dvh - var(--margin-base) * 2)",
+				"mobile-page-wrapper": "calc(100dvh - var(--margin-base) * 2 - var(--min-elm-size))",
 			},
 			maxWidth: {
 				"app": "calc(100vw - var(--margin-base) * 2)",

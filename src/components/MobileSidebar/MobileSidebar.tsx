@@ -18,11 +18,17 @@ const MobileSidebar = (props: IMobileSidebar) => {
 				aria-label={"open mobile sidebar"}
 				className={`${styles.button} ${open ? styles.isClosed : ""}`}
 				onClick={() => setOpen((prev) => !prev)}>
-				<svg viewBox="0 0 32 32" width={20} height={20}>
+				<svg viewBox="0 0 32 32" width={32} height={32}>
 					<path
 						className={`${styles.line} ${styles.lineTopBottom}`}
-						d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
-					<path className={styles.line} d="M7 16 27 16"></path>
+						strokeDasharray={"12 63"}
+						strokeLinecap={"round"}
+						strokeLinejoin={"round"}
+						strokeWidth={2}
+						fill={"none"}
+						d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+					/>
+					<path className={styles.line} strokeWidth={2} d="M7 16 27 16" />
 				</svg>
 			</button>
 			<nav className={styles.sidebar} data-active={open}>

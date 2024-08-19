@@ -122,7 +122,7 @@ const Typewriter = ({
 					return (
 						<>
 							{child.substring(0, currentTextIndex - start)}
-							{currentIndex.value >= currentTextIndex && cursorElm}
+							{currentIndex.value >= currentTextIndex && !timeDelay && cursorElm}
 						</>
 					);
 				} else {

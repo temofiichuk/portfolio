@@ -57,7 +57,7 @@ const initStructure: IFileNode[] = [
 ];
 
 const Folders = ({ structure }: IFolders) => {
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
 
 	return (
 		<ul className={styles.folder}>

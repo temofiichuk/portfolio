@@ -1,4 +1,6 @@
 .filter {
+	@apply overflow-hidden;
+
 	> li,
 	label {
 		@apply flex w-full h-max items-center gap-2;
@@ -23,7 +25,7 @@
 
 	path {
 		@apply stroke-[var(--text-color)];
-		animation: dash-reverse 0.25s linear;
+		animation: dash-reverse 0.75s linear;
 		stroke-dashoffset: 8.3;
 	}
 }

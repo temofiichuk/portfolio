@@ -1,14 +1,18 @@
 import { PropsWithChildren } from "react";
-import Sidebar from "@/components/Sidebar/Sidebar";
 import Filter from "@/components/Filter/Filter";
+import ToggleByScroll from "@/components/ToggleByScroll/ToggleByScroll";
+import Sidebar from "@/components/ToggleByScroll/Sidebar";
+import Section from "@/components/ToggleByScroll/Section";
 
 const Layout = async ({ children }: PropsWithChildren) => {
 	return (
 		<>
-			<Sidebar>
-				<Filter />
-			</Sidebar>
-			{children}
+			<ToggleByScroll>
+				<Sidebar>
+					<Filter />
+				</Sidebar>
+				<Section>{children}</Section>
+			</ToggleByScroll>
 		</>
 	);
 };
