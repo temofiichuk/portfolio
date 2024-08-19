@@ -33,13 +33,16 @@
 }
 
 .name {
-	@apply text-3xl lg:text-6xl;
+	@apply text-4xl md:text-6xl lg:text-8xl uppercase;
 }
 
 .position {
-	@apply text-lg lg:text-2xl;
+	@apply text-lg lg:text-2xl uppercase font-extrabold;
 }
 
-.mainText > * {
-	@apply touch-none pointer-events-none select-none inline-block;
+.mainText {
+	@apply max-w-min p-5 pl-0;
+	> h1 {
+		@apply touch-none pointer-events-none select-none;
+	}
 }

@@ -1,16 +1,16 @@
 .panel {
-	@apply h-[var(--min-elm-size)];
+	@apply h-[var(--min-elm-size)] relative;
 
-	&[data-position="0"] > ul {
+	&[data-position="top"] > ul {
 		@apply border-b;
 	}
-	&[data-position="1"] > ul {
+	&[data-position="bottom"] > ul {
 		@apply border-t;
 	}
-	&[data-position="2"] > ul {
+	&[data-position="left"] > ul {
 		@apply border-r;
 	}
-	&[data-position="3"] > ul {
+	&[data-position="right"] > ul {
 		@apply border-l;
 	}
 

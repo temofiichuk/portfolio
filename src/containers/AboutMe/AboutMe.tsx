@@ -1,14 +1,18 @@
 import { PropsWithChildren } from "react";
-import Sidebar from "@/components/Sidebar/Sidebar";
 import Folders from "@/components/Folders/Folders";
+import ToggleByScroll from "@/components/ToggleByScroll/ToggleByScroll";
+import Section from "@/components/ToggleByScroll/Section";
+import Sidebar from "@/components/ToggleByScroll/Sidebar";
 
 const AboutMe = ({ children }: PropsWithChildren) => {
 	return (
 		<>
-			<Sidebar>
-				<Folders />
-			</Sidebar>
-			{children}
+			<ToggleByScroll>
+				<Sidebar>
+					<Folders />
+				</Sidebar>
+				<Section>{children}</Section>
+			</ToggleByScroll>
 		</>
 	);
 };

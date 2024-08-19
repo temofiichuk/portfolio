@@ -1,0 +1,7 @@
+.sidebar {
+	@apply w-full h-max lg:w-max border-b border-base-color lg:border-b-0 lg:border-r lg:h-full;
+}
+
+.section {
+	@apply w-full h-full overflow-y-auto scrollbar-base;
+}

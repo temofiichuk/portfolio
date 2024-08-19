@@ -1,13 +1,12 @@
-import styles from "./Sidebar.module.scss";
 import { HTMLAttributes } from "react";
 
-interface ISidebar extends HTMLAttributes<HTMLElement> {}
+interface ISidebar extends HTMLAttributes<HTMLDivElement> {}
 
 const Sidebar = ({ children, ...props }: ISidebar) => {
 	return (
-		<div {...props} className={`${props.className} ${styles.sidebar}`}>
+		<aside {...props} className={"p-5"}>
 			{children}
-		</div>
+		</aside>
 	);
 };
 

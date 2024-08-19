@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import styles from "./LineCounter.module.scss";
 import { HTMLAttributes, memo, useEffect, useRef, useState } from "react";
 
@@ -27,16 +28,27 @@ const LineCounter = ({ children, ...props }: ILineCounter) => {
 	return (
 		<div {...props}>
 			<div className={styles.wrapper}>
-				{lines > 0 && (
+				{!!lines && (
 					<ul className={styles.lines}>
 						{Array.from({ length: lines }).map((_, index) => (
-							<li key={index}>{index + 1}</li>
+							<motion.li
+								key={index}
+								initial={{ y: -100, opacity: 0 }}
+								animate={{ y: 0, opacity: 1 }}
+								transition={{ delay: index * 0.001 }}>
+								{index + 1}
+							</motion.li>
 						))}
 					</ul>
 				)}
-				<div ref={ref} aria-label={"content"} className={styles.content}>
+				<motion.div
+					ref={ref}
+					aria-label={"content"}
+					className={styles.content}
+					initial={{ y: -100, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}>
 					{children}
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);

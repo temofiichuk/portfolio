@@ -1,10 +1,49 @@
 .filter {
+	@apply overflow-hidden;
+
 	> li,
 	label {
 		@apply flex w-full h-max items-center gap-2;
 	}
 
 	input {
-		@apply w-max h-max;
+		@apply hidden;
+	}
+
+	svg:not(.checkbox) {
+		@apply fill-[var(--text-color)];
+	}
+}
+
+.checkbox {
+	&.checked {
+		path {
+			animation: dash 0.25s linear;
+			stroke-dashoffset: 13.9;
+		}
+	}
+
+	path {
+		@apply stroke-[var(--text-color)];
+		animation: dash-reverse 0.75s linear;
+		stroke-dashoffset: 8.3;
+	}
+}
+
+@-webkit-keyframes dash {
+	from {
+		stroke-dashoffset: 8.3;
+	}
+	to {
+		stroke-dashoffset: 13.9;
+	}
+}
+
+@-webkit-keyframes dash-reverse {
+	from {
+		stroke-dashoffset: 13.9;
+	}
+	to {
+		stroke-dashoffset: 8.3;
 	}
 }

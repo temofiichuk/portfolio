@@ -1,6 +1,7 @@
 {
-  "hi": "Hallo Alle. Ich bin",
-  "name": "Mykhailo Temofiichuk",
-  "position": "Web Entwickler",
-  "github_advise": "Sie können mich auch auf Github finden"
+	"hi": "Hallo Alle. Ich bin",
+	"first_name": "Mykhailo",
+	"last_name": "Temofiichuk",
+	"position": "Web Entwickler",
+	"github_advise": "Sie können mich auch auf Github finden"
 }

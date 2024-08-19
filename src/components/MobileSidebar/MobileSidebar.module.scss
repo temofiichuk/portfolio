@@ -1,10 +1,12 @@
 .sidebar {
-	@apply absolute transition-[height] duration-500 ease-in-out h-0 z-20 right-0 w-[calc(100dvw-var(--margin-base)*2)]  lg:w-app flex flex-col bg-[var(--background)] border-b border-base-color overflow-hidden overflow-y-scroll;
+	@apply absolute transition-[height] duration-500 ease-in-out h-0 z-20 right-0
+	w-[calc(100dvw-var(--margin-base)*2)] lg:w-app flex flex-col bg-[var(--background)]
+	border-b border-base-color overflow-hidden overflow-y-scroll;
 
-	@supports (-webkit-touch-callout: none) {
-		/* CSS only for Safari on iOS */
-		max-height: calc(100dvh - 30px - var(--margin-base) * 2);
-	}
+	//@supports (-webkit-touch-callout: none) {
+	//	/* CSS only for Safari on iOS */
+	//	max-height: calc(100dvh - 30px - var(--margin-base) * 2);
+	//}
 
 	&[data-active="true"] {
 		@apply h-mobile-page-wrapper;
@@ -25,4 +27,26 @@
 
 .button {
 	@apply flex justify-center items-center h-full;
+}
+
+.button svg,
+.line {
+	transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button .line {
+	stroke: var(--text-color);
+}
+
+.button .lineTopBottom {
+	stroke-dasharray: 12 63;
+}
+
+.isClosed.button svg {
+	transform: rotate(-45deg) translate(0);
+}
+
+.isClosed.button svg .lineTopBottom {
+	stroke-dasharray: 20 300;
+	stroke-dashoffset: -32.42;
 }

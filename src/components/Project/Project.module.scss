@@ -1,6 +1,6 @@
 .project {
 	@apply bg-[var(--background)] bg-opacity-20
-	rounded-base border border-base-color
+	border border-base-color
 	flex flex-col justify-between mt-12 w-full h-full p-5;
 
 	img {
@@ -15,7 +15,7 @@
 	@apply bg-[var(--gray)] px-4 py-2 rounded-base text-[var(--text)];
 }
 .wrapper {
-	@apply flex flex-col items-center justify-around -mt-6 h-full;
+	@apply flex flex-col items-center justify-between -mt-6 h-full;
 }
 
 .info {
