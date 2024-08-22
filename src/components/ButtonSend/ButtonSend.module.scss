@@ -1,0 +1,185 @@
+.button {
+	@apply transform scale-100 cursor-pointer flex items-center justify-center transition-all duration-300 min-w-[60px] px-6 h-8 p-5;
+
+	&:hover {
+		.state p span {
+			@apply opacity-100;
+			animation: wave 0.5s ease forwards calc(var(--i) * 0.02s);
+		}
+
+		.stateDefault {
+			.icon {
+				@apply transform rotate-45 scale-125;
+			}
+		}
+	}
+
+	//&::after {
+	//	@apply content-[''] scale-0 absolute inset-0 bg-[var(--bg-button)] bg-opacity-10 z-0 transition-all duration-300;
+	//}
+	////
+	//&:hover::after {
+	//	@apply scale-x-[1.1] scale-y-125;
+	//}
+
+	&::before {
+		@apply content-[''] absolute inset-[7px_6px_6px_6px] rounded-[30px] blur-[0.5px] z-20;
+	}
+
+	.state {
+		@apply flex items-center justify-center relative pl-[29px] z-20;
+
+		p {
+			@apply flex items-center justify-center;
+
+			span {
+				@apply block opacity-0;
+				animation: slideDown 0.8s ease forwards calc(var(--i) * 0.03s);
+			}
+		}
+
+		.icon {
+			@apply absolute inset-0 right-[inherit] flex items-center justify-center transform scale-125 transition-all duration-300;
+
+			svg {
+				@apply overflow-visible;
+			}
+		}
+	}
+
+	.stateDefault {
+		.icon svg {
+			animation: land 0.6s ease forwards;
+		}
+
+		.icon:before {
+			animation: contrail 0.8s linear forwards;
+		}
+	}
+
+	.stateSent {
+		@apply flex;
+		p span {
+			@apply opacity-0;
+			animation: slideDown 0.8s ease forwards calc(var(--i) * 0.2s);
+		}
+
+		.icon svg {
+			@apply opacity-0 scale-100;
+			animation: appear 1.2s ease forwards 0.8s;
+		}
+	}
+
+	.stateSending {
+		&.stateDefault {
+			.icon {
+				@apply transform scale-125 rotate-0;
+			}
+
+			svg {
+				animation: takeOff 0.8s linear forwards;
+			}
+		}
+
+		p span {
+			@apply opacity-100;
+			animation: disapear 0.6s ease forwards calc(var(--i) * 0.03s);
+		}
+	}
+}
+
+@keyframes spin {
+	0% {
+		@apply rotate-0;
+	}
+	100% {
+		@apply rotate-[360deg];
+	}
+}
+
+@keyframes wave {
+	30% {
+		@apply opacity-100 translate-y-1 translate-x-0 rotate-0;
+	}
+	50% {
+		@apply opacity-100 -translate-y-[3px] translate-x-0 rotate-0 text-[var(--keyword-color)];
+	}
+	100% {
+		@apply opacity-100 translate-y-0 translate-x-0 rotate-0;
+	}
+}
+
+@keyframes slideDown {
+	0% {
+		@apply opacity-0 -translate-y-5 translate-x-[5px] rotate-[-90deg] text-[var(--keyword-color)] blur-sm;
+	}
+	30% {
+		@apply opacity-100 translate-y-[4px]  blur-0;
+	}
+	50% {
+		@apply opacity-100 -translate-y-[3px];
+	}
+	100% {
+		@apply opacity-100 translate-y-0 translate-x-0 rotate-0;
+	}
+}
+
+@keyframes disapear {
+	from {
+		@apply opacity-100;
+	}
+	to {
+		@apply opacity-0 translate-x-[5px] translate-y-[20px] text-[var(--keyword-color)] blur-sm;
+	}
+}
+
+@keyframes takeOff {
+	0% {
+		@apply opacity-100;
+	}
+	60% {
+		@apply opacity-100 translate-x-[70px] rotate-[45deg] scale-150;
+	}
+	100% {
+		@apply opacity-0 translate-x-[160px] rotate-[45deg] scale-0;
+	}
+}
+
+@keyframes land {
+	0% {
+		@apply opacity-0 translate-x-[-60px] translate-y-[30px] -rotate-[50deg] scale-[2];
+	}
+	100% {
+		@apply opacity-100 translate-x-0 translate-y-0 rotate-0 blur-0;
+	}
+}
+
+@keyframes contrail {
+	0% {
+		@apply w-0 opacity-100;
+	}
+	8% {
+		@apply w-[15px];
+	}
+	60% {
+		@apply opacity-70 w-[80px];
+	}
+	100% {
+		@apply opacity-0 w-[160px];
+	}
+}
+
+@keyframes appear {
+	0% {
+		@apply opacity-0 scale-[4] rotate-[-40deg] blur-[4px] text-[var(--keyword-color)];
+	}
+	30% {
+		@apply opacity-100 scale-[0.6] blur-[1px];
+	}
+	50% {
+		@apply opacity-100 scale-[1.2] blur-0;
+	}
+	100% {
+		@apply opacity-100 scale-[1];
+	}
+}

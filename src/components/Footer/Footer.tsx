@@ -4,13 +4,7 @@ import Panel, { PanelPosition } from "@/components/Panel/Panel";
 import { Locale } from "../../../i18n.config";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import Link from "next/link";
-import {
-	RiGamepadFill,
-	RiGithubFill,
-	RiLinkedinFill,
-	RiPuzzleFill,
-	RiTerminalBoxFill,
-} from "@remixicon/react";
+import { RiGithubFill, RiLinkedinFill } from "@remixicon/react";
 import initTranslations from "@/i18n";
 
 interface IFooter extends HTMLAttributes<HTMLElement> {
@@ -30,15 +24,15 @@ const Footer = async ({ locale, ...props }: IFooter) => {
 	return (
 		<footer {...props} className={`${props.className ?? ""} ${styles.footer}`}>
 			<Panel position={PanelPosition.BOTTOM}>
-				<button aria-label="open professional info" title="Open professional info">
-					<RiTerminalBoxFill widths={20} className={"hover:fill-icon-professional-info"} />
-				</button>
-				<button aria-label="open personal info" title="Open personal info">
-					<RiPuzzleFill widths={20} className={"hover:fill-icon-personal-info"} />
-				</button>
-				<button aria-label="open hobbies" title="Open hobbies">
-					<RiGamepadFill widths={20} className={"hover:fill-icon-hobbies"} />
-				</button>
+				{/*<button aria-label="open professional info" title="Open professional info">*/}
+				{/*	<RiTerminalBoxFill widths={20} className={"hover:fill-icon-professional-info"} />*/}
+				{/*</button>*/}
+				{/*<button aria-label="open personal info" title="Open personal info">*/}
+				{/*	<RiPuzzleFill widths={20} className={"hover:fill-icon-personal-info"} />*/}
+				{/*</button>*/}
+				{/*<button aria-label="open hobbies" title="Open hobbies">*/}
+				{/*	<RiGamepadFill widths={20} className={"hover:fill-icon-hobbies"} />*/}
+				{/*</button>*/}
 				<p>{t("find_me_in")}</p>
 				{SOCIAL.map(({ title, href, icon }) => (
 					<Link key={title} title={title} href={href}>

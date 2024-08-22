@@ -1,10 +1,11 @@
 "use client";
 
-import React, { Children, cloneElement, ReactElement, useRef } from "react";
+import React, { Children, cloneElement, ReactElement, useEffect, useRef, useState } from "react";
 import useScrollDirection from "@/hooks/useScrollDirection";
 import useIsMobile from "@/hooks/useIsMobile";
-import styles from "@/components/ToggleByScroll/ToggleByScroll.module.scss";
+import styles from "./ToggleByScroll.module.scss";
 import { motion } from "framer-motion";
+import Button from "@/components/Button/Button";
 
 interface ToggleByScrollProps {
 	children: [ReactElement, ReactElement];
@@ -16,27 +17,52 @@ const variants = {
 	hidden: { opacity: 0, height: 0 },
 };
 
+const variantsButton = {
+	visible: { opacity: 1, height: 42, width: "initial" },
+	initial: { opacity: 1 },
+	hidden: { opacity: 0, height: 0, width: 0 },
+};
+
 const ToggleByScroll = ({ children }: ToggleByScrollProps) => {
 	const isMobile = useIsMobile(1023);
+	const [isSidebar, setIsSidebar] = useState(true);
 	const ref = useRef<HTMLElement>(null);
 	const scrollDirection = useScrollDirection(ref);
 
 	const sidebarMotionProps = {
-		initial: isMobile ? "initial" : "visible",
-		animate: isMobile ? (scrollDirection === "up" ? "visible" : "hidden") : "visible",
+		initial: "initial",
+		animate: !isMobile || isSidebar ? "visible" : "hidden",
 		variants,
 		transition: { duration: 0.3 },
 		className: styles.sidebar,
 	};
+
+	const buttonMotionProps = {
+		initial: "initial",
+		animate: !isSidebar ? "visible" : "hidden",
+		variants: variantsButton,
+		transition: { duration: 0.3 },
+		className: styles.button,
+	};
+
+	useEffect(() => {
+		setIsSidebar(scrollDirection === "up");
+	}, [scrollDirection]);
 
 	return (
 		<>
 			{Children.map(children, (child, index) => {
 				if (index === 0) {
 					return (
-						<motion.div {...sidebarMotionProps}>
-							<div className="p-5">{child}</div>
-						</motion.div>
+						<>
+							<motion.div {...sidebarMotionProps}>
+								<div className="p-5">{child}</div>
+							</motion.div>
+
+							<motion.div {...buttonMotionProps}>
+								<Button onClick={() => setIsSidebar(true)}>Show</Button>
+							</motion.div>
+						</>
 					);
 				} else {
 					return cloneElement(child, { ref });

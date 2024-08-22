@@ -55,7 +55,7 @@
 					@apply px-6;
 				}
 
-				> *:not(:first-child) {
+				> *:not(:has(:first-child)) {
 					@apply border-l;
 				}
 			}

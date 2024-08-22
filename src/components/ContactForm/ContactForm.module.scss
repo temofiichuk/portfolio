@@ -17,7 +17,7 @@
 
 		input,
 		textarea {
-			@apply w-full border border-base-color rounded-md px-2 py-1 transition-all;
+			@apply w-full border border-base-color rounded-md px-2 py-1 transition-[border];
 
 			&:focus {
 				@apply border border-gray-600 outline outline-1;

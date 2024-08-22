@@ -17,7 +17,7 @@
 	}
 
 	.pages > li {
-		@apply border-b border-base-color;
+		@apply border-b border-base-color transition-colors duration-0;
 
 		> * {
 			@apply w-full h-full p-4 block;
@@ -31,7 +31,7 @@
 
 .button svg,
 .line {
-	transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+	@apply transition-all duration-500;
 }
 
 .button .line {

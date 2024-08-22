@@ -20,14 +20,14 @@ const data: ProjectType[] = [
 	{
 		image: "/example-projects/agregat-example/preview.png",
 		name: "Agragat",
-		stack: ["html", "js", "css"],
+		stack: ["html", "css"],
 		url: "/example-projects/agregat-example/index.html",
 		info: "Project Agregat is a just example web application built using Html, JavaScript and CSS to show html and css experience.",
 	},
 	{
 		image: "/example-projects/users_list_app/preview.png",
 		name: "Users List",
-		stack: ["html", "js", "css"],
+		stack: ["html", "js", "css", "tailwind"],
 		url: "/example-projects/users_list_app/index.html",
 		info: "A Users List app is a tool for managing and displaying a list of users with attributes. Features typically include adding, editing, deleting and search users, responsive design, and data validation. The app is useful for managing employee directories, event attendees, or membership lists.",
 	},
@@ -48,7 +48,7 @@ const data: ProjectType[] = [
 	{
 		image: "/example-projects/star_wars_app/preview.png",
 		name: "Star Wars App",
-		stack: ["html", "js", "css"],
+		stack: ["html", "js", "css", "tailwind"],
 		url: "/example-projects/star_wars_app/index.html",
 		info: "The Star Wars App is a web application that allows users to explore data from the Star Wars universe. By connecting to the Star Wars API, users can access information about characters, planets, starships, and more. The app provides an interactive way to discover and learn about various aspects of the Star Wars galaxy.",
 	},

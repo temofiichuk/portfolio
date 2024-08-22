@@ -13,6 +13,7 @@ import codeThemeStyles from "@/components/ContactForm/codeThemeStyles";
 import moment from "moment";
 import { motion } from "framer-motion";
 import MotionDiv from "@/components/MotionDiv";
+import ButtonSend from "@/components/ButtonSend/ButtonSend";
 
 interface IContactForm extends HTMLAttributes<HTMLFormElement> {}
 
@@ -28,7 +29,7 @@ const variants = {
 };
 
 const ContactForm = (props: IContactForm) => {
-	const [send, { loading }] = useSend();
+	const [send, { loading, sent }] = useSend();
 	const methods = useForm<EmailTemplateProps>({
 		resolver: yupResolver(contactSchema),
 		defaultValues: initialValues,
@@ -59,9 +60,7 @@ const ContactForm = (props: IContactForm) => {
 							</MotionDiv>
 						);
 					})}
-					<button type="submit" disabled={loading}>
-						{!loading ? "Send" : "...Loading"}
-					</button>
+					<ButtonSend sending={loading} sent={sent} />
 				</div>
 				<motion.div
 					className={styles.codeWrapper}

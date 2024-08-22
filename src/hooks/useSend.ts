@@ -6,6 +6,7 @@ interface Response {
 	data: any;
 	loading: boolean;
 	error?: Error;
+	sent?: boolean;
 }
 
 interface IQuery {
@@ -13,20 +14,26 @@ interface IQuery {
 	headers?: Headers;
 }
 
-const useSend = (init?: IQuery): [(data: EmailTemplateProps) => void, Response] => {
-	const [state, setState] = useState<Response>({ data: null, loading: false });
+const initialState: Response = { data: null, loading: false, sent: false, error: undefined };
 
-	const fetchData = useCallback((data: EmailTemplateProps) => {
-		setState((prev) => ({ ...prev, loading: true }));
-		fetch(`api/send`, {
-			method: "POST",
-			...init,
-			body: JSON.stringify(data),
-		})
-			.then((data: any) => setState((prev) => ({ ...prev, data })))
-			.finally(() => setState((prev) => ({ ...prev, loading: false })))
-			.catch((e) => setState((prev) => ({ ...prev, error: e, loading: false })));
-	}, []);
+const useSend = (init?: IQuery): [(data: EmailTemplateProps) => void, Response] => {
+	const [state, setState] = useState<Response>(initialState);
+
+	const fetchData = useCallback(
+		async (data: EmailTemplateProps) => {
+			setState((prev) => ({ ...prev, loading: true }));
+			await fetch(`api/send`, {
+				method: "POST",
+				...init,
+				body: JSON.stringify(data),
+			})
+				.then((data: any) => setState((prev) => ({ ...prev, data })))
+				.then((data: any) => setTimeout(() => setState(initialState), 5000))
+				.finally(() => setState((prev) => ({ ...prev, loading: false, sent: true })))
+				.catch((e) => setState((prev) => ({ ...prev, error: e, loading: false })));
+		},
+		[init]
+	);
 
 	useEffect(() => {
 		if (!state.error) return;

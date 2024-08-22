@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HTMLAttributes } from "react";
 import { STACK } from "@/containers/Projects/Projects";
+import Button from "@/components/Button/Button";
 
 export type ProjectType = {
 	image: string;
@@ -25,7 +26,7 @@ const Project = ({ detail: { image, name, url, info, stack }, ...props }: IProje
 			<div className={styles.wrapper}>
 				<p className={styles.info}>{info}</p>
 				<Link href={url} className={styles.button}>
-					View More
+					<Button>View More</Button>
 				</Link>
 			</div>
 		</article>
