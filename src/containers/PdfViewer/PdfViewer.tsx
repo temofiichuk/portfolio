@@ -23,6 +23,7 @@ const documents = {
 	specialist: "/education/junior_specialist_diploma.pdf",
 	master: "/education/master_diploma.pdf",
 	development: "/education/web-development_certificate.pdf",
+	b1: "/education/b1_certificate.pdf",
 };
 
 const PdfViewer = () => {
