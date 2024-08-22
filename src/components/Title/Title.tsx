@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 
 interface ITitle extends HTMLAttributes<HTMLElement> {}
 
+const exclusions = ["documents"];
+
 const Title = (props: ITitle) => {
 	const [title, setTitle] = useState<string | null>(null);
 	const pathname = usePathname();
@@ -20,6 +22,7 @@ const Title = (props: ITitle) => {
 		setTitle(paths[0]);
 	}, [pathname, language]);
 
+	if (title && exclusions.includes(title)) return;
 	return (
 		pathname !== `/${language}` &&
 		pathname !== "/" && <p {...props}>{title && `${title}${extension}`}</p>

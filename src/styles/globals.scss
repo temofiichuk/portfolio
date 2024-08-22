@@ -10,11 +10,16 @@
 		--light-bg: #fcfcfc;
 
 		--dark-border-color: #1e2d3d;
-		--light-border-color: #b8c7d7;
+		--light-border-color: #8b98a8;
 
-		--text-color: #607b96;
-		--dark-text-color: #ffffff;
-		--light-text-color: #000000;
+		--dark-bg-button: #1e2d3d;
+		--light-bg-button: #b8c7d7;
+
+		--dark-text-button: #b8c7d7;
+		--light-text-button: #1e2d3d;
+
+		--dark-text-color: #f0f0f0;
+		--light-text-color: #282828;
 
 		--not-active-icon-color: #607b96;
 
@@ -54,7 +59,10 @@
 		--border-color-base: var(--dark-border-color);
 		--theme-switcher-bg: var(--light-bg);
 		--text: var(--dark-text-color);
+		--text-color: var(--dark-text-color);
 		--hover-cursor: #ffffff;
+		--bg-button: var(--light-bg-button);
+		--text-button: var(--light-text-button);
 
 		// dark mode colors of code block
 		--comment: #69676c;
@@ -77,11 +85,25 @@
 	// light mode
 	.light {
 		--background: var(--light-bg);
-		--border-color-base: var(--text-color);
+		--border-color-base: var(--light-border-color);
 		--text: var(--light-text-color);
-		--theme-switcher-bg: var(--dark-bg);
+		--text-color: var(--light-text-color);
+		--theme-switcher-bg: var(--light-text-color);
 		--hover-cursor: #000000;
 		--bg-scrollbar: var(--light-bg);
+		--bg-button: var(--dark-bg-button);
+		--text-button: var(--dark-text-button);
+
+		// dark mode colors of code block
+		--comment: #6c6f72;
+		--property: #444444;
+		--pre-color: #444444;
+		--string: #d89100;
+		--variable: #000000;
+		--property-access: #007400;
+		--keyword: #b00040;
+		--operator: #000000;
+		--linenumber: #444444;
 	}
 }
 
@@ -122,5 +144,5 @@ span {
 }
 
 *:hover {
-	@apply transition duration-300;
+	@apply transition-colors;
 }

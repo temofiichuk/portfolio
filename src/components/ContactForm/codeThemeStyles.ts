@@ -1,4 +1,4 @@
-export default {
+const theme = {
 	'pre[class*="language-"]': {
 		background: "var(--background)",
 		color: "var(--pre-color)",
@@ -40,3 +40,5 @@ export default {
 	},
 	"react-syntax-highlighter-line-number": {},
 };
+
+export default theme;

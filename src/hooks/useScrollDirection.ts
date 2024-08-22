@@ -6,9 +6,9 @@ function useScrollDirection(element?: MutableRefObject<any>) {
 	useEffect(() => {
 		let lastScrollTop = 0;
 		if (!element?.current) return;
+		const section = element.current;
 
 		const handleScroll = () => {
-			const section = element.current;
 			const { scrollTop, scrollHeight, offsetHeight } = section;
 			if (scrollTop === 0 || scrollTop + offsetHeight >= scrollHeight) {
 				return;
@@ -17,8 +17,8 @@ function useScrollDirection(element?: MutableRefObject<any>) {
 			lastScrollTop = Math.max(0, scrollTop);
 		};
 
-		element.current?.addEventListener("scroll", handleScroll);
-		return () => element.current?.removeEventListener("scroll", handleScroll);
+		section.addEventListener("scroll", handleScroll);
+		return () => section.removeEventListener("scroll", handleScroll);
 	}, []);
 
 	return scrollDirection;

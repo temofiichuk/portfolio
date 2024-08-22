@@ -5,3 +5,7 @@
 .section {
 	@apply w-full h-full overflow-y-auto scrollbar-base;
 }
+
+.button {
+	@apply w-full h-8 border-b border-base-color flex justify-center items-center lg:hidden;
+}

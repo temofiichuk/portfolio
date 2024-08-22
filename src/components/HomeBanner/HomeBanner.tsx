@@ -56,7 +56,11 @@ const HomeBanner = async ({ locale, ...props }: IHomeBanner) => {
 					</CursorHoverDiv>
 
 					{process.env.NEXT_PUBLIC_GITHUB_LINK && (
-						<MotionDiv initial={{ y: 100 }} animate={{ y: 0 }} className={styles.extraWrapper}>
+						<MotionDiv
+							initial={{ y: 100, opacity: 0 }}
+							animate={{ y: 0, opacity: 1 }}
+							transition={{ delay: 4 }}
+							className={styles.extraWrapper}>
 							<p className={styles.comment}>{`// ${t("github_advise")}`}</p>
 							<p>
 								<span className={styles.keyword}>const </span>
